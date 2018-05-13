@@ -8,11 +8,13 @@ Path::Path()
 Path::Path(int * matrix, int dimension, int start, int end):matrix(matrix), dimensionOfMatrix(dimension),
 															start(start), end(end)
 {
+	length = 0;
 	path = new LinkedList<Point>();
 }
 
 Path::~Path()
 {
+	delete path;
 }
 
 Path & Path::operator=(const Path & p)

@@ -34,6 +34,8 @@ public:
 	int dimensionOfMatrix;
 	int start;
 	int end;
+
+	int length;
 	LinkedList<Point> *path;
 
 private:
