@@ -36,6 +36,12 @@
     <ClInclude Include="PLAY.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Path.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lianliankan.cpp">
@@ -51,6 +57,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="PLAY.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Path.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
