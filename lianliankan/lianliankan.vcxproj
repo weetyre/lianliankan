@@ -187,7 +187,9 @@
   <ItemGroup>
     <ClInclude Include="lianliankan.h" />
     <ClInclude Include="lianliankanDlg.h" />
+    <ClInclude Include="LinkedList.h" />
     <ClInclude Include="MENU.h" />
+    <ClInclude Include="Paths.h" />
     <ClInclude Include="PLAY.h" />
     <ClInclude Include="PLAY2.h" />
     <ClInclude Include="PLAY3.h" />
@@ -199,6 +201,7 @@
     <ClCompile Include="lianliankan.cpp" />
     <ClCompile Include="lianliankanDlg.cpp" />
     <ClCompile Include="MENU.cpp" />
+    <ClCompile Include="Paths.cpp" />
     <ClCompile Include="PLAY.cpp" />
     <ClCompile Include="PLAY2.cpp" />
     <ClCompile Include="PLAY3.cpp" />
