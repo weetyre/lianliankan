@@ -42,6 +42,12 @@
     <ClInclude Include="Paths.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="PLAY2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PLAY3.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lianliankan.cpp">
@@ -60,6 +66,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Paths.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PLAY2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PLAY3.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -81,6 +93,9 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="res\bitmap2.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Menu.bmp">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>
