@@ -189,7 +189,7 @@
     <ClInclude Include="lianliankanDlg.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="MENU.h" />
-    <ClInclude Include="Path.h" />
+    <ClInclude Include="Paths.h" />
     <ClInclude Include="PLAY.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -199,7 +199,7 @@
     <ClCompile Include="lianliankan.cpp" />
     <ClCompile Include="lianliankanDlg.cpp" />
     <ClCompile Include="MENU.cpp" />
-    <ClCompile Include="Path.cpp" />
+    <ClCompile Include="Paths.cpp" />
     <ClCompile Include="PLAY.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

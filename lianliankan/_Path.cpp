@@ -1,4 +1,5 @@
 #include "Path.h"
+#include "stdafx.h"
 
 Path::Path()
 {
@@ -37,7 +38,7 @@ Path & Path::findPath()
 	// TODO: 在此处插入 return 语句
 }
 
-Path & Path::findPath(int v, )
+Path & Path::findPath(int v)
 {
 	// TODO: 在此处插入 return 语句
 }

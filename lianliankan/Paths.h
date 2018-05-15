@@ -1,8 +1,9 @@
 #pragma once
-#ifndef PATH_H_
-#define PATH_H_
+#ifndef PATHS_H_
+#define PATHS_H_
 
 #include "LinkedList.h"
+#include "stdafx.h"
 
 class Point {
 public:
@@ -14,20 +15,21 @@ public:
 	int y;
 };
 
-class Path {
+class Paths
+{
 public:
-	Path();
-	Path(int *matrix, int dimension, int start, int end);
-	~Path();
+	Paths();
+	~Paths();
+	Paths(int *matrix, int dimension, int start, int end);
 
-	Path &operator= (const Path &p);
+	Paths &operator= (const Paths &p);
 
 	Point operator() (int i) const;
 
-	Path &getPath();
+	Paths &getPath();
 
-	Path &findPath();
-	Path & findPath(int v);
+	Paths &findPath();
+	Paths & findPath(int v);
 
 public:
 	int *matrix;
