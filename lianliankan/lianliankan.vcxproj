@@ -219,6 +219,7 @@
     <None Include="res\lianliankan.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Menu.bmp" />
     <Image Include="res\bitmap2.bmp" />
     <Image Include="res\lianliankan.ico" />
     <Image Include="res\Menu.bmp" />
