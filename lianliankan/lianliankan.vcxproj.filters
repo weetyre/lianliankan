@@ -68,5 +68,11 @@
     <Image Include="res\lianliankan.ico">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="res\Menu.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\bitmap2.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>
