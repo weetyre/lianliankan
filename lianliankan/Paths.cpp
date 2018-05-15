@@ -18,6 +18,7 @@ Paths::~Paths()
 {
 	delete path;
 }
+/*
 
 Paths & Paths::operator=(const Paths & p)
 {
@@ -54,3 +55,5 @@ Point::Point(int x, int y) :x(x), y(y)
 Point::~Point()
 {
 }
+
+*/
