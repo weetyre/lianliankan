@@ -5,15 +5,7 @@
 #include "LinkedList.h"
 #include "stdafx.h"
 
-class Point {
-public:
-	Point();
-	Point(int x, int y);
-	~Point();
 
-	int x;
-	int y;
-};
 
 class Paths
 {
@@ -24,7 +16,7 @@ public:
 
 	Paths &operator= (const Paths &p);
 
-	Point operator() (int i) const;
+	int operator() (int i) const;
 
 	Paths &getPath();
 
@@ -38,7 +30,7 @@ public:
 	int end;
 
 	int length;
-	LinkedList<Point> *path;
+	LinkedList<int> *path;
 
 private:
 };
