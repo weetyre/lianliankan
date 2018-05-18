@@ -185,10 +185,14 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="HELP.h" />
     <ClInclude Include="lianliankan.h" />
     <ClInclude Include="lianliankanDlg.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="LOCAL_LIST.h" />
     <ClInclude Include="MENU.h" />
+    <ClInclude Include="NET_LIST.h" />
+    <ClInclude Include="NEWID.h" />
     <ClInclude Include="Paths.h" />
     <ClInclude Include="PLAY.h" />
     <ClInclude Include="Resource.h" />
@@ -196,9 +200,13 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HELP.cpp" />
     <ClCompile Include="lianliankan.cpp" />
     <ClCompile Include="lianliankanDlg.cpp" />
+    <ClCompile Include="LOCAL_LIST.cpp" />
     <ClCompile Include="MENU.cpp" />
+    <ClCompile Include="NET_LIST.cpp" />
+    <ClCompile Include="NEWID.cpp" />
     <ClCompile Include="Paths.cpp" />
     <ClCompile Include="PLAY.cpp" />
     <ClCompile Include="stdafx.cpp">
