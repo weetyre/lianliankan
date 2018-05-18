@@ -48,6 +48,18 @@
     <ClInclude Include="PLAY3.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="NEWID.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LOCAL_LIST.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="NET_LIST.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HELP.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lianliankan.cpp">
@@ -72,6 +84,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="PLAY3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="NEWID.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LOCAL_LIST.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="NET_LIST.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HELP.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
