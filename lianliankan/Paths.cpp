@@ -1,50 +1,50 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "Paths.h"
 
 
 Paths::Paths()
 {
-	path = new LinkedList<Point>();
+	path = new LinkedList<int>();
 }
 
 Paths::Paths(int * matrix, int dimension, int start, int end) :matrix(matrix), dimensionOfMatrix(dimension),
 start(start), end(end)
 {
 	length = 0;
-	path = new LinkedList<Point>();
+	path = new LinkedList<int>();
 }
 
 Paths::~Paths()
 {
 	delete path;
 }
-/*
 
-Paths & Paths::operator=(const Paths & p)
+/*Paths & Paths::operator=(const Paths & p)
 {
-	// TODO: ÔÚ´Ë´¦²åÈë return Óï¾ä
+	// TODO: åœ¨æ­¤å¤„æ’å…¥ return è¯­å¥
 
 }
 
-Point Paths::operator()(int i) const
+/*Point Paths::operator()(int i) const
 {
 	return path->get(i);
-}
+}/*
 
 Paths & Paths::getPath()
 {
-	// TODO: ÔÚ´Ë´¦²åÈë return Óï¾ä
+	// TODO: åœ¨æ­¤å¤„æ’å…¥ return è¯­å¥
 	return *this;
 }
 
 Paths & Paths::findPath()
 {
-	// TODO: ÔÚ´Ë´¦²åÈë return Óï¾ä
+	// TODO: åœ¨æ­¤å¤„æ’å…¥ return è¯­å¥
+
 }
 
 Paths & Paths::findPath(int v)
 {
-	// TODO: ÔÚ´Ë´¦²åÈë return Óï¾ä
+	// TODO: åœ¨æ­¤å¤„æ’å…¥ return è¯­å¥
 }
 
 Point::Point(int x, int y) :x(x), y(y)
@@ -54,6 +54,4 @@ Point::Point(int x, int y) :x(x), y(y)
 
 Point::~Point()
 {
-}
-
-*/
+}*/
