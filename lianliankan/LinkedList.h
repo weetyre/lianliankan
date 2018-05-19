@@ -59,6 +59,14 @@ public:
 
 	~LinkedList();
 
+	LinkedList<T> &operator=(LinkedList<T> &list);
+
+	LinkedList<T> *operator=(LinkedList<T> *list);
+
+	LinkedList<T> &operator+(LinkedList<T> &l);
+
+	LinkedList<T> *operator+(LinkedList<T> *l);
+
 	bool isEmpty() const;
 
 	int getSize() const;
@@ -117,19 +125,112 @@ LinkedList<T>::LinkedList() :size(0) {
 
 template<typename T>
 LinkedList<T>::~LinkedList() {
-	while (true) {
-		if (last != nullptr) {
-			Node<T> *l = last;
-			last = last->prev;
-			delete l;
-		}
-		else {
-			break;
-		}
+
+	while (last != nullptr) {
+		Node<T> *l = last;
+		last = last->prev;
+		delete l;
 	}
 
-	//delete this;
+	//while (true) {
+	//	if (last != nullptr) {
+	//		Node<T> *l = last;
+	//		last = last->prev;
+	//		delete l;
+	//	}
+	//	else {
+	//		break;
+	//	}
+	//}
 }
+
+template<typename T>
+inline LinkedList<T>& LinkedList<T>::operator=(LinkedList<T>& list)
+{
+	while (last != first) {
+		Node<T> *n = last;
+		last = last->prev;
+		delete n;
+	}
+
+	if ((&list)) {
+		//delete this->first;
+		return *this;
+	}
+
+	for (int i = 0; i < list.size; i++) {
+		this->addBack(list.get(i));
+	}
+
+	return *this;
+}
+
+template<typename T>
+inline LinkedList<T>* LinkedList<T>::operator=(LinkedList<T>* list)
+{
+	while (last != first) {
+		Node<T> *n = last;
+		last = last->prev;
+		delete n;
+	}
+
+	if (!list) {
+		delete this->first;
+		return this = nullptr;
+	}
+
+	for (int i = 0; i < list->size; i++) {
+		this->addBack(list->get(i));
+	}
+
+	return this;
+}
+
+
+template<typename T>
+inline LinkedList<T>& LinkedList<T>::operator+(LinkedList<T>& l)
+{
+	if (!(&l)) {
+		return *this;
+	}
+	else if (!this) {
+		return l;
+	}
+	else {
+		LinkedList<T> * t = new LinkedList<T>();
+		for (int i = 0; i < this->size; i++) {
+			t->addBack(this->get(i));
+		}
+		for (int i = 0; i < l.size; i++) {
+			t->addBack(l.get(i));
+		}
+
+		return *t;
+	}
+}
+
+template<typename T>
+inline LinkedList<T>* LinkedList<T>::operator+(LinkedList<T>* l)
+{
+	if (!l) {
+		return this;
+	}
+	else if (!this) {
+		return l;
+	}
+	else {
+		LinkedList<T> * t = new LinkedList<T>();
+		for (int i = 0; i < this->size; i++) {
+			t->addBack(this->get(i));
+		}
+		for (int i = 0; i < l->size; i++) {
+			t->addBack(l->get(i));
+		}
+
+		return t;
+	}
+}
+
 
 template<typename T>
 inline int LinkedList<T>::getSize() const {
@@ -141,6 +242,9 @@ inline T LinkedList<T>::getFirst() {
 	return first->next->item;
 }
 
+/*
+* get indexth element
+*/
 template<typename T>
 inline T LinkedList<T>::get(const int index) {
 	checkIndex(index);
@@ -180,7 +284,7 @@ inline void LinkedList<T>::addFron(T e)
 		linkLast(e);
 	}
 	else {
-		linkToBefore(e, first, first->next)
+		linkToBefore(e, first, first->next);
 	}
 }
 
@@ -210,7 +314,7 @@ inline void LinkedList<T>::checkIndex(const int index)
 template<typename T>
 inline Node<T>* LinkedList<T>::nodeAt(const int index)
 {
-	if (index > (size >> 1)) {
+	if (index >(size >> 1)) {
 		Node<T> *x = last;
 		for (int i = size - 1; i > index; i--) {
 			x = x->prev;
