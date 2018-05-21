@@ -42,6 +42,18 @@
     <ClInclude Include="Paths.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="NEWID.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LOCAL_LIST.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="NET_LIST.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HELP.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lianliankan.cpp">
@@ -60,6 +72,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Paths.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="NEWID.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LOCAL_LIST.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="NET_LIST.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HELP.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -81,6 +105,21 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="res\bitmap2.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\登陆界面.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\棋盘背景.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\bitmap4.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\帮助.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\排行榜.bmp">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

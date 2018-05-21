@@ -23,7 +23,7 @@
     <ProjectGuid>{F22EE342-30EB-47E9-ABD5-D49AE88FE08C}</ProjectGuid>
     <Keyword>MFCProj</Keyword>
     <RootNamespace>lianliankan</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -185,26 +185,30 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="HELP.h" />
     <ClInclude Include="lianliankan.h" />
     <ClInclude Include="lianliankanDlg.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="LOCAL_LIST.h" />
     <ClInclude Include="MENU.h" />
+    <ClInclude Include="NET_LIST.h" />
+    <ClInclude Include="NEWID.h" />
     <ClInclude Include="Paths.h" />
     <ClInclude Include="PLAY.h" />
-    <ClInclude Include="PLAY2.h" />
-    <ClInclude Include="PLAY3.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HELP.cpp" />
     <ClCompile Include="lianliankan.cpp" />
     <ClCompile Include="lianliankanDlg.cpp" />
+    <ClCompile Include="LOCAL_LIST.cpp" />
     <ClCompile Include="MENU.cpp" />
+    <ClCompile Include="NET_LIST.cpp" />
+    <ClCompile Include="NEWID.cpp" />
     <ClCompile Include="Paths.cpp" />
     <ClCompile Include="PLAY.cpp" />
-    <ClCompile Include="PLAY2.cpp" />
-    <ClCompile Include="PLAY3.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -220,8 +224,13 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\bitmap2.bmp" />
+    <Image Include="res\bitmap4.bmp" />
     <Image Include="res\lianliankan.ico" />
     <Image Include="res\Menu.bmp" />
+    <Image Include="res\帮助.bmp" />
+    <Image Include="res\排行榜.bmp" />
+    <Image Include="res\棋盘背景.bmp" />
+    <Image Include="res\登陆界面.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
