@@ -6,7 +6,6 @@
 #include "stdafx.h"
 
 
-
 class Paths
 {
 public:
@@ -14,7 +13,7 @@ public:
 	~Paths();
 	Paths(int *matrix, int dimension, int start, int end);
 
-	Paths &operator= (const Paths &p);
+	Paths &operator= (Paths &p);
 
 	int operator() (int i) const;
 
@@ -29,6 +28,7 @@ public:
 	int start;
 	int end;
 
+	int lineCount = 0;
 	int length;
 	LinkedList<int> *path;
 

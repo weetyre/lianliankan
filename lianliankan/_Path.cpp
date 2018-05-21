@@ -1,20 +1,23 @@
 #include "Path.h"
-#include "stdafx.h"
 
 Path::Path()
 {
-	path = new LinkedList<Point>();
+	path = new LinkedList<int>();
 }
 
-Path::Path(int * matrix, int dimension, int start, int end):matrix(matrix), dimensionOfMatrix(dimension),
+Path::Path(int * matrix, int dimension, int start, int end):matrix(matrix), d(dimension),
 															start(start), end(end)
 {
-	length = 0;
-	path = new LinkedList<Point>();
+	this->matrix = new int[d];
+	memcpy(this->matrix, matrix, dimension * dimension);
+
+	//length = 0;
+	path = new LinkedList<int>();
 }
 
 Path::~Path()
 {
+	delete[] matrix;
 	delete path;
 }
 
@@ -23,7 +26,7 @@ Path & Path::operator=(const Path & p)
 	// TODO: 在此处插入 return 语句
 }
 
-Point Path::operator()(int i) const
+int Path::operator()(int i) const
 {
 	return path->get(i);
 }
@@ -35,19 +38,23 @@ Path & Path::getPath()
 
 Path & Path::findPath()
 {
-	// TODO: 在此处插入 return 语句
+	LinkedList<nextPoint> paths;
+	paths.add(nextPoint{start,-1});
+	/*for (int i = 0; i < 4; i++) {
+		if(_IsIndex())
+	}*/
 }
 
-Path & Path::findPath(int v)
+Path & Path::findPath(int v, int direction)
 {
 	// TODO: 在此处插入 return 语句
 }
 
-Point::Point(int x, int y):x(x),y(y)
-{
-
-}
-
-Point::~Point()
-{
-}
+//Point::Point(int x, int y):x(x),y(y)
+//{
+//
+//}
+//
+//Point::~Point()
+//{
+//}
