@@ -19,30 +19,39 @@ Paths::~Paths()
 	delete path;
 }
 
-Paths & Paths::operator=(Paths & p)
+/*Paths & Paths::operator=(const Paths & p)
 {
-	this->dimensionOfMatrix = p.dimensionOfMatrix;
+	// TODO: åœ¨æ­¤å¤„æ’å…¥ return è¯­å¥
 
-	return p;
 }
 
-int Paths::operator()(int i) const
+/*Point Paths::operator()(int i) const
 {
 	return path->get(i);
+}/*
+
+Paths & Paths::getPath()
+{
+	// TODO: åœ¨æ­¤å¤„æ’å…¥ return è¯­å¥
+	return *this;
 }
-//
-//Paths & Paths::getPath()
-//{
-//	// TODO: ÔÚ´Ë´¦²åÈë return Óï¾ä
-//	return *this;
-//}
-//
-//Paths & Paths::findPath()
-//{
-//	// TODO: ÔÚ´Ë´¦²åÈë return Óï¾ä
-//}
-//
-//Paths & Paths::findPath(int v)
-//{
-//	// TODO: ÔÚ´Ë´¦²åÈë return Óï¾ä
-//}
+
+Paths & Paths::findPath()
+{
+	// TODO: åœ¨æ­¤å¤„æ’å…¥ return è¯­å¥
+
+}
+
+Paths & Paths::findPath(int v)
+{
+	// TODO: åœ¨æ­¤å¤„æ’å…¥ return è¯­å¥
+}
+
+Point::Point(int x, int y) :x(x), y(y)
+{
+
+}
+
+Point::~Point()
+{
+}*/
