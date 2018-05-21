@@ -24,7 +24,7 @@ public:
 
 public:
 	int *matrix;
-	int dimensionOfMatrix;
+	int d;
 	int start;
 	int end;
 
