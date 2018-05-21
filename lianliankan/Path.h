@@ -3,15 +3,28 @@
 #define PATH_H_
 
 #include "LinkedList.h"
+#include <cstdlib>
 
-class Point {
-public:
-	Point();
-	Point(int x, int y);
-	~Point();
+#define LEFT 0
+#define UP 1
+#define RIGHT 2
+#define Down 3
 
-	int x;
-	int y;
+#define _IsIndex(i) ((i % d -1) > -1) && (i - d > -1) && (i % d + 1 < d) && (i + d < d * d)
+
+//class Point {
+//public:
+//	Point();
+//	Point(int x, int y);
+//	~Point();
+//
+//	int x;
+//	int y;
+//};
+
+struct nextPoint {
+	int index;
+	int direction;
 };
 
 class Path {
@@ -22,21 +35,22 @@ public:
 
 	Path &operator= (const Path &p);
 
-	Point operator() (int i) const;
+	int operator() (int i) const;
 
 	Path &getPath();
 
 	Path &findPath();
-	Path & findPath(int v);
+	Path & findPath(int v, int direction);
 
 public:
 	int *matrix;
-	int dimensionOfMatrix;
+	int d;
 	int start;
 	int end;
+	int lines = 0;
+	//int length;
 
-	int length;
-	LinkedList<Point> *path;
+	LinkedList<int> *path;
 
 private:
 };

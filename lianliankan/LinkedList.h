@@ -65,11 +65,13 @@ public:
 
 	T getFirst();
 
+	T getLast();
+
 	T get(const int index);
 
 	T set(const int index, T value);
 
-	bool addBack(T e);
+	bool add(T e);
 
 	void addFron(T e);
 
@@ -117,15 +119,10 @@ LinkedList<T>::LinkedList() :size(0) {
 
 template<typename T>
 LinkedList<T>::~LinkedList() {
-	while (true) {
-		if (last != nullptr) {
-			Node<T> *l = last;
-			last = last->prev;
-			delete l;
-		}
-		else {
-			break;
-		}
+	while (last != nullptr) {
+		Node<T> *l = last;
+		last = last->prev;
+		delete l;
 	}
 
 	//delete this;
@@ -139,6 +136,12 @@ inline int LinkedList<T>::getSize() const {
 template<typename T>
 inline T LinkedList<T>::getFirst() {
 	return first->next->item;
+}
+
+template<typename T>
+inline T LinkedList<T>::getLast()
+{
+	return last->item;
 }
 
 template<typename T>
@@ -163,7 +166,7 @@ inline T LinkedList<T>::set(const int index, T e) {
 }
 
 template<typename T>
-inline bool LinkedList<T>::addBack(T e) {
+inline bool LinkedList<T>::add(T e) {
 	linkLast(e);
 
 	if (last == nullptr) {
