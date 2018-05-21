@@ -224,8 +224,11 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\bitmap2.bmp" />
+    <Image Include="res\bitmap4.bmp" />
     <Image Include="res\lianliankan.ico" />
     <Image Include="res\Menu.bmp" />
+    <Image Include="res\帮助.bmp" />
+    <Image Include="res\排行榜.bmp" />
     <Image Include="res\棋盘背景.bmp" />
     <Image Include="res\登陆界面.bmp" />
   </ItemGroup>
