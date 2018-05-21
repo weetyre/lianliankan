@@ -76,12 +76,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -187,8 +189,10 @@
     <ClInclude Include="lianliankanDlg.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="MENU.h" />
-    <ClInclude Include="Path.h" />
+    <ClInclude Include="Paths.h" />
     <ClInclude Include="PLAY.h" />
+    <ClInclude Include="PLAY2.h" />
+    <ClInclude Include="PLAY3.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -197,8 +201,10 @@
     <ClCompile Include="lianliankan.cpp" />
     <ClCompile Include="lianliankanDlg.cpp" />
     <ClCompile Include="MENU.cpp" />
-    <ClCompile Include="Path.cpp" />
+    <ClCompile Include="Paths.cpp" />
     <ClCompile Include="PLAY.cpp" />
+    <ClCompile Include="PLAY2.cpp" />
+    <ClCompile Include="PLAY3.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -213,7 +219,9 @@
     <None Include="res\lianliankan.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\bitmap2.bmp" />
     <Image Include="res\lianliankan.ico" />
+    <Image Include="res\Menu.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

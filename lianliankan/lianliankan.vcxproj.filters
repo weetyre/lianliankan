@@ -36,10 +36,10 @@
     <ClInclude Include="PLAY.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Path.h">
+    <ClInclude Include="LinkedList.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="LinkedList.h">
+    <ClInclude Include="Paths.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -59,7 +59,7 @@
     <ClCompile Include="PLAY.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Path.cpp">
+    <ClCompile Include="Paths.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -75,6 +75,12 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\lianliankan.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Menu.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\bitmap2.bmp">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>
