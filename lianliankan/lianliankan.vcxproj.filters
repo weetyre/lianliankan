@@ -63,6 +63,9 @@
     <ClInclude Include="MusicPlayer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CSETTINS.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lianliankan.cpp">
@@ -102,6 +105,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MusicPlayer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CSETTINS.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -204,6 +210,9 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="res\注册.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\游戏选项背景.bmp">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

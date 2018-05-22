@@ -185,6 +185,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CSETTINS.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="HELP.h" />
     <ClInclude Include="lianliankan.h" />
@@ -203,6 +204,7 @@
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CSETTINS.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="HELP.cpp" />
     <ClCompile Include="lianliankan.cpp" />
@@ -258,6 +260,7 @@
     <Image Include="res\排行榜.bmp" />
     <Image Include="res\棋盘背景.bmp" />
     <Image Include="res\注册.bmp" />
+    <Image Include="res\游戏选项背景.bmp" />
     <Image Include="res\登陆界面.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
