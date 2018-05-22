@@ -6,10 +6,6 @@
 #include "LinkedList.h"
 
 
-enum direction {
-	Null, UP, DOWN, LEFT, RIGHT
-};
-
 
 class MyPoint {
 public:
@@ -58,6 +54,10 @@ public:
 		DIFFICULT = 16,
 	};
 
+	enum direction {
+		UP, DOWN, LEFT, RIGHT
+	};
+
 
 	int ** map;
 
@@ -77,7 +77,7 @@ private:
 
 	int restCount;
 
-	bool flag = false;
+	bool hasFound = false;
 	int lines = 0;
 
 public:
@@ -93,7 +93,7 @@ public:
 private:
 	void createMap();
 
-	void findPath();
+	bool findPath();
 
 	bool DFS(MyPoint p, int direction);
 };
