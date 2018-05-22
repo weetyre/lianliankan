@@ -227,6 +227,27 @@
     <None Include="res\lianliankan.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\1.bmp" />
+    <Image Include="res\1.png" />
+    <Image Include="res\10.png" />
+    <Image Include="res\11.png" />
+    <Image Include="res\12.png" />
+    <Image Include="res\13.png" />
+    <Image Include="res\14.png" />
+    <Image Include="res\15.png" />
+    <Image Include="res\16.png" />
+    <Image Include="res\2.bmp" />
+    <Image Include="res\2.png" />
+    <Image Include="res\3.bmp" />
+    <Image Include="res\3.png" />
+    <Image Include="res\4.bmp" />
+    <Image Include="res\4.png" />
+    <Image Include="res\5.bmp" />
+    <Image Include="res\5.png" />
+    <Image Include="res\6.png" />
+    <Image Include="res\7.png" />
+    <Image Include="res\8.png" />
+    <Image Include="res\9.png" />
     <Image Include="res\bitmap2.bmp" />
     <Image Include="res\bitmap4.bmp" />
     <Image Include="res\lianliankan.ico" />
@@ -234,6 +255,7 @@
     <Image Include="res\帮助.bmp" />
     <Image Include="res\排行榜.bmp" />
     <Image Include="res\棋盘背景.bmp" />
+    <Image Include="res\注册.bmp" />
     <Image Include="res\登陆界面.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
