@@ -122,5 +122,68 @@
     <Image Include="res\排行榜.bmp">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="res\1.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\1.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\2.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\2.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\3.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\3.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\4.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\4.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\5.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\5.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\6.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\7.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\8.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\9.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\10.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\11.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\12.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\13.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\14.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\15.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\16.png">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>
