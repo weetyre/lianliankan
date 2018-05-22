@@ -75,24 +75,31 @@ void Game::createMap()
 	delete[] b;
 }
 
-void Game::findPath()
+bool Game::findPath()
 {
 	if (map[start.x][start.y] != map[end.x][end.y] || map[start.x][start.y] == 0 || map[end.x][end.y] == 0) {
-
+		return false;
 	}
+
 	lines = 0;
-	flag = false;
+	hasFound = false;
 	path->clear();
 
 	path->add(start);
 
-	DFS(MyPoint(start.x, start.y - 1), UP);
+	for (int i = 0; i < 4; i++) {
+		if (DFS(MyPoint(start.x, start.y - 1), i)) {
+			return true;
+		}
+	}
+
+	//return DFS(MyPoint(start.x, start.y - 1), UP);
 }
 
 bool Game::DFS(MyPoint p, int direction)
 {
 	path->add(p);
-	if (flag) {  //has found the path
+	if (hasFound) {  //has found the path
 		return true;
 	}
 	//the num of lines is greater than 3 or is not a legal index
@@ -101,14 +108,78 @@ bool Game::DFS(MyPoint p, int direction)
 	}
 	//we find it
 	if (p == end && lines < 4) {
-		flag = true;
+		hasFound = true;
+		return true;
+	}
+	if (map[p.x][p.y] != 0) {
+		return false;
+	}
+
+	//search up
+	if (direction == UP) {
+		if (!DFS(MyPoint(p.x, p.y - 1), UP)) {
+			path->removeLast();
+		}
+	}
+	else {
+		lines++;
+		if (!DFS(MyPoint(p.x, p.y - 1), UP)) {
+			path->removeLast();
+		}
+		lines--;
+	}
+	if (hasFound) {
 		return true;
 	}
 
-	if (direction == UP && map[p.x][p.y] == 0) {
-		MyPoint p2(p.x, p.y - 1);
-		if (!DFS(p2, UP)) {
+	//search left
+	if (direction == LEFT) {
+		if (!DFS(MyPoint(p.x - 1, p.y), LEFT)) {
 			path->removeLast();
 		}
+	}
+	else {
+		lines++;
+		if (!DFS(MyPoint(p.x - 1, p.y), LEFT)) {
+			path->removeLast();
+		}
+		lines--;
+	}
+	if (hasFound) {
+		return true;
+	}
+
+	//search down
+	if (direction == DOWN) {
+		if (!DFS(MyPoint(p.x, p.y + 1), DOWN)) {
+			path->removeLast();
+		}
+	}
+	else {
+		lines++;
+		if (!DFS(MyPoint(p.x, p.y + 1), DOWN)) {
+			path->removeLast();
+		}
+		lines--;
+	}
+	if (hasFound) {
+		return true;
+	}
+
+	//search RIGHT
+	if (direction == RIGHT) {
+		if (!DFS(MyPoint(p.x + 1, p.y), RIGHT)) {
+			path->removeLast();
+		}
+	}
+	else {
+		lines++;
+		if (!DFS(MyPoint(p.x + 1, p.y), RIGHT)) {
+			path->removeLast();
+		}
+		lines--;
+	}
+	if (hasFound) {
+		return true;
 	}
 }
