@@ -251,6 +251,7 @@
     <Image Include="res\帮助.bmp" />
     <Image Include="res\排行榜.bmp" />
     <Image Include="res\棋盘背景.bmp" />
+    <Image Include="res\注册.bmp" />
     <Image Include="res\登陆界面.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
