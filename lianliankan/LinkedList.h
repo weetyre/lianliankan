@@ -59,6 +59,8 @@ public:
 
 	~LinkedList();
 
+	void clear();
+
 	bool isEmpty() const;
 
 	int getSize() const;
@@ -126,6 +128,16 @@ LinkedList<T>::~LinkedList() {
 	}
 
 	//delete this;
+}
+
+template<typename T>
+inline void LinkedList<T>::clear()
+{
+	while (last != first) {
+		Node<T> *l = last;
+		last = last->prev;
+		delete l;
+	}
 }
 
 template<typename T>
