@@ -23,7 +23,7 @@
     <ProjectGuid>{F22EE342-30EB-47E9-ABD5-D49AE88FE08C}</ProjectGuid>
     <Keyword>MFCProj</Keyword>
     <RootNamespace>lianliankan</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -117,6 +117,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <UseFullPaths>false</UseFullPaths>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -194,6 +196,7 @@
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="LOCAL_LIST.h" />
     <ClInclude Include="MENU.h" />
+    <ClInclude Include="MusicPlayer.h" />
     <ClInclude Include="NET_LIST.h" />
     <ClInclude Include="NEWID.h" />
     <ClInclude Include="Paths.h" />
@@ -212,6 +215,7 @@
     <ClCompile Include="lianliankanDlg.cpp" />
     <ClCompile Include="LOCAL_LIST.cpp" />
     <ClCompile Include="MENU.cpp" />
+    <ClCompile Include="MusicPlayer.cpp" />
     <ClCompile Include="NET_LIST.cpp" />
     <ClCompile Include="NEWID.cpp" />
     <ClCompile Include="Paths.cpp" />

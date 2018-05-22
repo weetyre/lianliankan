@@ -60,6 +60,9 @@
     <ClInclude Include="User.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="MusicPlayer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="CSETTINS.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -102,6 +105,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="User.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicPlayer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="CSETTINS.cpp">
