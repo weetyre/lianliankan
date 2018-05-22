@@ -1,0 +1,4 @@
+name		scores		     date			class
+yyl		100		2018/3/21		1
+cw		100		2018/2/21		2
+zxm		100		2017/3/2			3

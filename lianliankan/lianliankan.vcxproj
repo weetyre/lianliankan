@@ -117,6 +117,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <UseFullPaths>false</UseFullPaths>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -185,12 +187,15 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CSETTINS.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="HELP.h" />
     <ClInclude Include="lianliankan.h" />
     <ClInclude Include="lianliankanDlg.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="LOCAL_LIST.h" />
     <ClInclude Include="MENU.h" />
+    <ClInclude Include="MusicPlayer.h" />
     <ClInclude Include="NET_LIST.h" />
     <ClInclude Include="NEWID.h" />
     <ClInclude Include="Paths.h" />
@@ -198,13 +203,17 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CSETTINS.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="HELP.cpp" />
     <ClCompile Include="lianliankan.cpp" />
     <ClCompile Include="lianliankanDlg.cpp" />
     <ClCompile Include="LOCAL_LIST.cpp" />
     <ClCompile Include="MENU.cpp" />
+    <ClCompile Include="MusicPlayer.cpp" />
     <ClCompile Include="NET_LIST.cpp" />
     <ClCompile Include="NEWID.cpp" />
     <ClCompile Include="Paths.cpp" />
@@ -215,6 +224,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="lianliankan.rc" />
@@ -223,10 +233,37 @@
     <None Include="res\lianliankan.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Menu.bmp" />
+    <Image Include="res\1.bmp" />
+    <Image Include="res\1.png" />
+    <Image Include="res\10.png" />
+    <Image Include="res\11.png" />
+    <Image Include="res\12.png" />
+    <Image Include="res\13.png" />
+    <Image Include="res\14.png" />
+    <Image Include="res\15.png" />
+    <Image Include="res\16.png" />
+    <Image Include="res\2.bmp" />
+    <Image Include="res\2.png" />
+    <Image Include="res\3.bmp" />
+    <Image Include="res\3.png" />
+    <Image Include="res\4.bmp" />
+    <Image Include="res\4.png" />
+    <Image Include="res\5.bmp" />
+    <Image Include="res\5.png" />
+    <Image Include="res\6.png" />
+    <Image Include="res\7.png" />
+    <Image Include="res\8.png" />
+    <Image Include="res\9.png" />
     <Image Include="res\bitmap2.bmp" />
+    <Image Include="res\bitmap4.bmp" />
     <Image Include="res\lianliankan.ico" />
     <Image Include="res\Menu.bmp" />
+    <Image Include="res\帮助.bmp" />
+    <Image Include="res\排行榜.bmp" />
+    <Image Include="res\棋盘背景.bmp" />
+    <Image Include="res\注册.bmp" />
+    <Image Include="res\游戏选项背景.bmp" />
+    <Image Include="res\登陆界面.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
