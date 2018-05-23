@@ -11,13 +11,16 @@ using namespace std;
 
 Game::Game()
 {
-
+	//new a 2D array, map[difficulty + 2][difficulty + 2]( image is at map[1 to difficulty][1 to difficulty] )
+	for (int i = 0; i < difficulty + 2; i++) {
+		map[i] = new int[(difficulty + 2)];
+	}
 }
 
 
 Game::~Game()
 {
-	for (int i = 0; i < difficulty; i++) {
+	for (int i = 0; i < difficulty + 2; i++) {
 		delete[] map[i];
 	}
 }
@@ -43,35 +46,33 @@ void Game::setDifficulty(int d)
 	}
 }
 
+void Game::reCreateMap()
+{
+	int *s = new int[difficulty * difficulty];
+	int k = 0;
+	for (int i = 1; i < difficulty + 1; i++) {
+		for (int j = 1; j < difficulty + 1; j++) {
+			s[k] = map[i][j];
+			k++;
+		}
+	}
+
+	randomMapWithSource(s);
+	delete[] s;
+}
+
 //after choose the difficulty, before start the game, create the map
 void Game::createMap()
 {
-	int i, j;
-	//new a 2D array, map[difficulty + 2][difficulty + 2]( image is at map[1 to difficulty][1 to difficulty] )
-	for (i = 0; i < difficulty + 2; i++) {
-		map[i] = new int[(difficulty + 2)];
-	}
-
 	int *b = new int[difficulty * difficulty];
+	int i, j;
 	for (i = 0; i < difficulty * difficulty; i += images) {
 		for (j = 0; j < images; j++) {
 			b[i + j] = i / images + 1;
 		}
 	}
 
-	//random_shuffle()用来对一个元素序列进行重新排序（随机的）
-	srand((unsigned)time(NULL));
-	std::random_shuffle(b, b + difficulty * difficulty);
-
-	int k = 0;
-	memset(map, 0, sizeof(map));
-	for (i = 1; i <= difficulty; i++) {
-		for (j = 1; j <= difficulty; j++) {
-			map[i][j] = b[k];
-			k++;
-		}
-	}
-
+	randomMapWithSource(b);
 	delete[] b;
 }
 
@@ -193,5 +194,21 @@ bool Game::DFS(MyPoint p, int direction)
 	}
 	if (hasFound) {
 		return true;
+	}
+}
+
+void Game::randomMapWithSource(int * source)
+{
+	//random_shuffle()用来对一个元素序列进行重新排序（随机的）andom_shuffle()有两个参数，第一个参数是指向序列首元素的迭代器，第二个参数则指向序列最后一个元素的下一个位置
+	srand((unsigned)time(NULL));
+	std::random_shuffle(source, source + difficulty * difficulty);
+
+	int k = 0, i, j;
+	memset(map, 0, sizeof(map));
+	for (i = 1; i <= difficulty; i++) {
+		for (j = 1; j <= difficulty; j++) {
+			map[i][j] = source[k];
+			k++;
+		}
 	}
 }
