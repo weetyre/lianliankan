@@ -187,7 +187,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CLLKButton.h" />
+    <ClInclude Include="CBUTTON.h" />
     <ClInclude Include="CSETTINS.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="HELP.h" />
@@ -207,7 +207,7 @@
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CLLKButton.cpp" />
+    <ClCompile Include="CBUTTON.cpp" />
     <ClCompile Include="CSETTINS.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="HELP.cpp" />
