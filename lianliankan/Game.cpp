@@ -79,8 +79,12 @@ void Game::createMap()
 	delete[] b;
 }
 
-bool Game::findPath()
+/*
+* if there is a path from vertex start to vertex end, return true and you can get the path by varOfGame.path
+*/
+bool Game::judge()
 {
+	//如果不同图片（对应数字不同） || 其中有空的图片（对应零）
 	if (map[start.x][start.y] != map[end.x][end.y] || map[start.x][start.y] == 0 || map[end.x][end.y] == 0) {
 		return false;
 	}
@@ -90,14 +94,22 @@ bool Game::findPath()
 	path->clear();
 
 	path->add(start);
-
-	for (int i = 0; i < 4; i++) {
-		if (DFS(MyPoint(start.x, start.y - 1), i)) {
-			return true;
-		}
+	//从 start 点开始，上下左右四个方向依次搜索路径
+	if (DFS(MyPoint(start.x, start.y - 1), UP)) {
+		return true;
 	}
-
-	//return DFS(MyPoint(start.x, start.y - 1), UP);
+	else if (DFS(MyPoint(start.x, start.y + 1), DOWN)) {
+		return true;
+	}
+	else if (DFS(MyPoint(start.x - 1, start.y), LEFT)) {
+		return true;
+	}
+	else if (DFS(MyPoint(start.x + 1, start.y), RIGHT)) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 bool Game::DFS(MyPoint p, int direction)

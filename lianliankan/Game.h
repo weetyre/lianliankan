@@ -90,10 +90,11 @@ public:
 
 	MyPoint getTip();
 
-private:
+	bool judge();
+
 	void createMap();
 
-	bool findPath();
+private:
 
 	bool DFS(MyPoint p, int direction);
 };
