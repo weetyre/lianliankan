@@ -59,12 +59,15 @@ public:
 	};
 
 
-	int ** map;
+	int ** map = nullptr;
 
 	LinkedList<MyPoint> *path;
 
 	MyPoint start;
 	MyPoint end;
+
+	int restCount;
+	int grade;
 
 
 private:
@@ -73,11 +76,8 @@ private:
 
 	int images;
 
-	int grade;
-
-	int restCount;
-
 	bool hasFound = false;
+
 	int lines = 0;
 
 public:
@@ -99,6 +99,8 @@ private:
 	bool DFS(MyPoint p, int direction);
 
 	void randomMapWithSource(int * source);
+
+	void deleteMap();
 };
 
 #endif
