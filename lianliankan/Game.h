@@ -65,6 +65,7 @@ public:
 
 	MyPoint start;
 	MyPoint end;
+
 	int restCount;
 	int grade;
 
