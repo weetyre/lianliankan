@@ -42,6 +42,10 @@ void Game::setDifficulty(int d)
 		break;
 	}
 }
+int Game::getDifficulty()
+{
+	return difficulty;
+}
 
 //after choose the difficulty, before start the game, create the map
 void Game::createMap()
