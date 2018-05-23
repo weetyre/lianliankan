@@ -140,6 +140,8 @@ bool Game::DFS(MyPoint p, int direction)
 		hasFound = true;
 		return true;
 	}
+	int i = map[p.x][p.y];
+	cout << i << endl;
 	if (map[p.x][p.y] != 0) {
 		return false;
 	}
