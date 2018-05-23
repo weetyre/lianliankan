@@ -14,8 +14,9 @@ MusicPlayer::~MusicPlayer()
 
 void MusicPlayer::playBGM()
 {
-	mciSendString(L"close at", NULL, 0, NULL);
+	//mciSendString(L"close at", NULL, 0, NULL);
 	mciSendString(L"open ..\\music\\BGSound6.mp3 alias at", NULL, 0, NULL);
+	mciSendString(L"play at", NULL, 0, NULL);
 	mciSendString(L"play music repeat", NULL, 0, NULL);
 
 }
