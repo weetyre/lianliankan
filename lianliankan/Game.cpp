@@ -97,7 +97,6 @@ bool Game::judge(MyPoint start, MyPoint end)
 
 	this->start = start;
 	this->end = end;
-	lines = 0;
 	hasFound = false;
 	path->clear();
 	reInitVisited();
@@ -123,19 +122,22 @@ bool Game::judge(MyPoint start, MyPoint end)
 
 bool Game::DFS(MyPoint p, int direction)
 {
-	path->add(p);
+	printMap();
+
 	if (hasFound) {  //has found the path
 		return true;
 	}
 	//the num of lines is greater than 3 or is not a legal index
-	if (lines > 3 || _IsNIndex(p.x, p.y)) {
+	if (path->getSize() > 3 || _IsNIndex(p.x, p.y)) {
 		return false;
 	}
 	//we find it
-	if (p == end && lines < 4) {
+	if (p == end) {
 		hasFound = true;
+		path->add(p);
 		return true;
 	}
+
 	if (visited[p.y][p.x] != 0) {
 		return false;
 	}
@@ -143,16 +145,14 @@ bool Game::DFS(MyPoint p, int direction)
 
 	//search up
 	if (direction == UP) {
-		if (!DFS(MyPoint(p.x, p.y - 1), UP)) {
-			path->removeLast();
-		}
+		DFS(MyPoint(p.x, p.y - 1), UP);
+		visited[p.y][p.x] = 0;
 	}
 	else {
-		lines++;
+		path->add(p);  //add 拐点 to path
 		if (!DFS(MyPoint(p.x, p.y - 1), UP)) {
 			path->removeLast();
 		}
-		lines--;
 	}
 	if (hasFound) {
 		return true;
@@ -160,16 +160,14 @@ bool Game::DFS(MyPoint p, int direction)
 
 	//search left
 	if (direction == LEFT) {
-		if (!DFS(MyPoint(p.x - 1, p.y), LEFT)) {
-			path->removeLast();
-		}
+		DFS(MyPoint(p.x - 1, p.y), LEFT);
+		visited[p.y][p.x] = 0;
 	}
 	else {
-		lines++;
+		path->add(p);
 		if (!DFS(MyPoint(p.x - 1, p.y), LEFT)) {
 			path->removeLast();
 		}
-		lines--;
 	}
 	if (hasFound) {
 		return true;
@@ -177,16 +175,14 @@ bool Game::DFS(MyPoint p, int direction)
 
 	//search down
 	if (direction == DOWN) {
-		if (!DFS(MyPoint(p.x, p.y + 1), DOWN)) {
-			path->removeLast();
-		}
+		DFS(MyPoint(p.x, p.y + 1), DOWN);
+		visited[p.y][p.x] = 0;
 	}
 	else {
-		lines++;
+		path->add(p);
 		if (!DFS(MyPoint(p.x, p.y + 1), DOWN)) {
 			path->removeLast();
 		}
-		lines--;
 	}
 	if (hasFound) {
 		return true;
@@ -194,16 +190,14 @@ bool Game::DFS(MyPoint p, int direction)
 
 	//search RIGHT
 	if (direction == RIGHT) {
-		if (!DFS(MyPoint(p.x + 1, p.y), RIGHT)) {
-			path->removeLast();
-		}
+		DFS(MyPoint(p.x + 1, p.y), RIGHT);
+		visited[p.y][p.x] = 0;
 	}
 	else {
-		lines++;
+		path->add(p);
 		if (!DFS(MyPoint(p.x + 1, p.y), RIGHT)) {
 			path->removeLast();
 		}
-		lines--;
 	}
 	if (hasFound) {
 		return true;
@@ -219,11 +213,14 @@ void Game::randomMapWithSource(int * source)
 	std::random_shuffle(source, source + difficulty * difficulty);
 
 	int k = 0, i, j;
-	for (int i = 0; i < difficulty + 2; i++)
-	{
-		memset(map[i], 0, difficulty + 2);
-	}
 
+	//initial map = {0}
+	for (i = 0; i < difficulty + 2; i++) {
+		for (j = 0; j < difficulty + 2; j++) {
+			map[i][j] = 0;
+		}
+	}
+	// copy array source to map
 	for (i = 1; i <= difficulty; i++) {
 		for (j = 1; j <= difficulty; j++) {
 			map[i][j] = source[k];
@@ -235,7 +232,9 @@ void Game::randomMapWithSource(int * source)
 void Game::reInitVisited()
 {
 	for (int i = 0; i < difficulty + 2; i++) {
-		memcpy(visited[i], map[i], difficulty + 2);
+		for (int j = 0; j < difficulty + 2; j++) {
+			visited[i][j] = map[i][j];
+		}
 	}
 }
 
@@ -268,10 +267,19 @@ void Game::deleteMap()
 
 void Game::printMap()
 {
+	//for (int i = 0; i < difficulty + 2; i++) {
+	//	for (int j = 0; j < difficulty + 2; j++) {
+	//		cout << map[i][j] << " ";
+	//	}
+	//	cout << endl;
+	//}
+	cout << endl;
+	cout << "visited" << endl;
 	for (int i = 0; i < difficulty + 2; i++) {
 		for (int j = 0; j < difficulty + 2; j++) {
-			cout << map[i][j] << " ";
+			cout << visited[i][j] << " ";
 		}
 		cout << endl;
 	}
+	cout << endl;
 }

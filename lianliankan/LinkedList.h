@@ -137,6 +137,7 @@ inline void LinkedList<T>::clear()
 		Node<T> *l = last;
 		last = last->prev;
 		delete l;
+		size--;
 	}
 }
 
