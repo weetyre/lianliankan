@@ -11,10 +11,7 @@ using namespace std;
 
 Game::Game()
 {
-	//new a 2D array, map[difficulty + 2][difficulty + 2]( image is at map[1 to difficulty][1 to difficulty] )
-	for (int i = 0; i < difficulty + 2; i++) {
-		map[i] = new int[(difficulty + 2)];
-	}
+	path = new LinkedList<MyPoint>();
 }
 
 
@@ -27,6 +24,8 @@ Game::~Game()
 
 void Game::setDifficulty(int d)
 {
+	deleteMap();
+
 	difficulty = EASY;
 
 	switch (d)
@@ -43,6 +42,11 @@ void Game::setDifficulty(int d)
 
 	default:
 		break;
+	}
+
+	map = new int*[difficulty + 2];
+	for (int i = 0; i < difficulty + 2; i++) {
+		map[i] = new int[difficulty + 2];
 	}
 }
 int Game::getDifficulty()
@@ -213,6 +217,15 @@ void Game::randomMapWithSource(int * source)
 		for (j = 1; j <= difficulty; j++) {
 			map[i][j] = source[k];
 			k++;
+		}
+	}
+}
+
+void Game::deleteMap()
+{
+	if (map != nullptr) {
+		for (int i = 0; i < difficulty + 2; i++) {
+			delete[] map[i];
 		}
 	}
 }
