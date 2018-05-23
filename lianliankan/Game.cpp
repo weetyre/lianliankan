@@ -45,6 +45,10 @@ void Game::setDifficulty(int d)
 		break;
 	}
 }
+int Game::getDifficulty()
+{
+	return difficulty;
+}
 
 void Game::reCreateMap()
 {
