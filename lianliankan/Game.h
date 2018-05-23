@@ -71,7 +71,6 @@ public:
 
 
 private:
-	int **visited;
 
 	int difficulty;
 
@@ -94,7 +93,6 @@ public:
 	bool judge(MyPoint start, MyPoint end);
 
 	void createMap();
-	void printMap();
 
 private:
 
@@ -103,9 +101,6 @@ private:
 	void randomMapWithSource(int * source);
 
 	void deleteMap();
-	void reInitVisited();
-	void reInitMap();
-
 };
 
 #endif
