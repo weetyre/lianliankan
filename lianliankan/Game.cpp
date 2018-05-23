@@ -67,6 +67,11 @@ void Game::reCreateMap()
 	delete[] s;
 }
 
+MyPoint Game::getTip()
+{
+	return MyPoint();
+}
+
 //after choose the difficulty, before start the game, create the map
 void Game::createMap()
 {
