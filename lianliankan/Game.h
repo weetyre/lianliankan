@@ -94,6 +94,7 @@ public:
 	bool judge(MyPoint start, MyPoint end);
 
 	void createMap();
+	void printMap();
 
 private:
 
@@ -105,7 +106,6 @@ private:
 	void reInitVisited();
 	void reInitMap();
 
-	void printMap();
 };
 
 #endif
