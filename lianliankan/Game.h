@@ -90,7 +90,7 @@ public:
 
 	MyPoint getTip();
 
-	bool judge();
+	bool judge(MyPoint start, MyPoint end);
 
 	void createMap();
 
