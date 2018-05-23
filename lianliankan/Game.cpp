@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "Game.h"
 #include "time.h"
 #include <iostream>
@@ -11,7 +11,8 @@ using namespace std;
 
 Game::Game()
 {
-	path = new LinkedList<MyPoint>();
+	//new a 2D array, map[difficulty + 2][difficulty + 2]( image is at map[1 to difficulty][1 to difficulty] )
+
 }
 
 
@@ -24,8 +25,6 @@ Game::~Game()
 
 void Game::setDifficulty(int d)
 {
-	deleteMap();
-
 	difficulty = EASY;
 
 	switch (d)
@@ -43,10 +42,9 @@ void Game::setDifficulty(int d)
 	default:
 		break;
 	}
-
-	map = new int*[difficulty + 2];
+	map = new int*[difficulty+2];
 	for (int i = 0; i < difficulty + 2; i++) {
-		map[i] = new int[difficulty + 2];
+		map[i] = new int[(difficulty + 2)];
 	}
 }
 int Game::getDifficulty()
@@ -89,7 +87,7 @@ void Game::createMap()
 */
 bool Game::judge()
 {
-	//Èç¹û²»Í¬Í¼Æ¬£¨¶ÔÓ¦Êı×Ö²»Í¬£© || ÆäÖĞÓĞ¿ÕµÄÍ¼Æ¬£¨¶ÔÓ¦Áã£©
+	//å¦‚æœä¸åŒå›¾ç‰‡ï¼ˆå¯¹åº”æ•°å­—ä¸åŒï¼‰ || å…¶ä¸­æœ‰ç©ºçš„å›¾ç‰‡ï¼ˆå¯¹åº”é›¶ï¼‰
 	if (map[start.x][start.y] != map[end.x][end.y] || map[start.x][start.y] == 0 || map[end.x][end.y] == 0) {
 		return false;
 	}
@@ -99,7 +97,7 @@ bool Game::judge()
 	path->clear();
 
 	path->add(start);
-	//´Ó start µã¿ªÊ¼£¬ÉÏÏÂ×óÓÒËÄ¸ö·½ÏòÒÀ´ÎËÑË÷Â·¾¶
+	//ä» start ç‚¹å¼€å§‹ï¼Œä¸Šä¸‹å·¦å³å››ä¸ªæ–¹å‘ä¾æ¬¡æœç´¢è·¯å¾„
 	if (DFS(MyPoint(start.x, start.y - 1), UP)) {
 		return true;
 	}
@@ -207,7 +205,7 @@ bool Game::DFS(MyPoint p, int direction)
 
 void Game::randomMapWithSource(int * source)
 {
-	//random_shuffle()ÓÃÀ´¶ÔÒ»¸öÔªËØĞòÁĞ½øĞĞÖØĞÂÅÅĞò£¨Ëæ»úµÄ£©andom_shuffle()ÓĞÁ½¸ö²ÎÊı£¬µÚÒ»¸ö²ÎÊıÊÇÖ¸ÏòĞòÁĞÊ×ÔªËØµÄµü´úÆ÷£¬µÚ¶ş¸ö²ÎÊıÔòÖ¸ÏòĞòÁĞ×îºóÒ»¸öÔªËØµÄÏÂÒ»¸öÎ»ÖÃ
+	//random_shuffle()ç”¨æ¥å¯¹ä¸€ä¸ªå…ƒç´ åºåˆ—è¿›è¡Œé‡æ–°æ’åºï¼ˆéšæœºçš„ï¼‰andom_shuffle()æœ‰ä¸¤ä¸ªå‚æ•°ï¼Œç¬¬ä¸€ä¸ªå‚æ•°æ˜¯æŒ‡å‘åºåˆ—é¦–å…ƒç´ çš„è¿­ä»£å™¨ï¼Œç¬¬äºŒä¸ªå‚æ•°åˆ™æŒ‡å‘åºåˆ—æœ€åä¸€ä¸ªå…ƒç´ çš„ä¸‹ä¸€ä¸ªä½ç½®
 	srand((unsigned)time(NULL));
 	std::random_shuffle(source, source + difficulty * difficulty);
 
@@ -217,15 +215,6 @@ void Game::randomMapWithSource(int * source)
 		for (j = 1; j <= difficulty; j++) {
 			map[i][j] = source[k];
 			k++;
-		}
-	}
-}
-
-void Game::deleteMap()
-{
-	if (map != nullptr) {
-		for (int i = 0; i < difficulty + 2; i++) {
-			delete[] map[i];
 		}
 	}
 }
