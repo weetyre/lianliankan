@@ -258,6 +258,9 @@
     <Image Include="res\9.png" />
     <Image Include="res\bitmap2.bmp" />
     <Image Include="res\bitmap4.bmp" />
+    <Image Include="res\help.ico" />
+    <Image Include="res\icon1.ico" />
+    <Image Include="res\IDD_ICON.ico" />
     <Image Include="res\lianliankan.ico" />
     <Image Include="res\Menu.bmp" />
     <Image Include="res\帮助.bmp" />
