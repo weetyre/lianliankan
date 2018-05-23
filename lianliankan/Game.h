@@ -97,6 +97,8 @@ public:
 private:
 
 	bool DFS(MyPoint p, int direction);
+
+	void randomMapWithSource(int * source);
 };
 
 #endif
