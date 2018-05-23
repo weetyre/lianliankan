@@ -83,7 +83,7 @@ private:
 public:
 	Game();
 	~Game();
-
+	int getDifficulty();
 	void setDifficulty(int d);
 
 	void reCreateMap();
