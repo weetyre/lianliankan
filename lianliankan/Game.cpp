@@ -12,7 +12,7 @@ using namespace std;
 Game::Game()
 {
 	//new a 2D array, map[difficulty + 2][difficulty + 2]( image is at map[1 to difficulty][1 to difficulty] )
-
+	path = new LinkedList<MyPoint>();
 }
 
 
@@ -85,13 +85,15 @@ void Game::createMap()
 /*
 * if there is a path from vertex start to vertex end, return true and you can get the path by varOfGame.path
 */
-bool Game::judge()
+bool Game::judge(MyPoint start, MyPoint end)
 {
 	//如果不同图片（对应数字不同） || 其中有空的图片（对应零）
 	if (map[start.x][start.y] != map[end.x][end.y] || map[start.x][start.y] == 0 || map[end.x][end.y] == 0) {
 		return false;
 	}
 
+	this->start = start;
+	this->end = end;
 	lines = 0;
 	hasFound = false;
 	path->clear();
