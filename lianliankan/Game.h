@@ -93,7 +93,7 @@ public:
 private:
 	void createMap();
 
-	bool findPath();
+	bool judge();
 
 	bool DFS(MyPoint p, int direction);
 };
