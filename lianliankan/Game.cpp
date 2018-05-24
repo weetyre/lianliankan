@@ -13,18 +13,21 @@ Game::Game()
 {
 	//new a 2D array, map[difficulty + 2][difficulty + 2]( image is at map[1 to difficulty][1 to difficulty] )
 	path = new LinkedList<MyPoint>();
+	dirct = new MyVector[4];
 }
 
 
 Game::~Game()
 {
-	for (int i = 0; i < difficulty + 2; i++) {
-		delete[] map[i];
-	}
+	deleteMap();
+	delete[] dirct;
+	delete path;
 }
 
 void Game::setDifficulty(int d)
 {
+	deleteMap();
+
 	difficulty = EASY;
 
 	switch (d)
@@ -42,17 +45,20 @@ void Game::setDifficulty(int d)
 	default:
 		break;
 	}
-	map = new int*[difficulty+2];
-	for (int i = 0; i < difficulty + 2; i++) {
-		map[i] = new int[(difficulty + 2)];
-	}
+
+	reNewMap();
 }
 int Game::getDifficulty()
 {
 	return difficulty;
 }
 
-void Game::reCreateMap()
+MyPoint Game::getTip()
+{
+	return MyPoint();
+}
+
+void Game::resetMap()
 {
 	int *s = new int[difficulty * difficulty];
 	int k = 0;
@@ -67,13 +73,8 @@ void Game::reCreateMap()
 	delete[] s;
 }
 
-MyPoint Game::getTip()
-{
-	return MyPoint();
-}
-
 //after choose the difficulty, before start the game, create the map
-void Game::createMap()
+void Game::initeMap()
 {
 	int *b = new int[difficulty * difficulty];
 	int i, j;
@@ -93,10 +94,11 @@ void Game::createMap()
 bool Game::judge(MyPoint start, MyPoint end)
 {
 	//如果不同图片（对应数字不同） || 其中有空的图片（对应零）
-	if (map[start.x][start.y] != map[end.x][end.y] || map[start.x][start.y] == 0 || map[end.x][end.y] == 0) {
+	if (map[start.y][start.x] != map[end.y][end.x] || map[start.y][start.x] == 0 || map[end.y][end.x] == 0) {
 		return false;
 	}
 
+	reInitVisited();
 	this->start = start;
 	this->end = end;
 	hasFound = false;
@@ -141,6 +143,7 @@ bool Game::DFS(MyPoint p, int direction)
 	if (visited[p.y][p.x] != 0) {
 		return false;
 	}
+	visited[p.y][p.x] = -1;
 
 	//search up
 	if (direction == UP) {
@@ -210,13 +213,16 @@ void Game::randomMapWithSource(int * source)
 	std::random_shuffle(source, source + difficulty * difficulty);
 
 	int k = 0, i, j;
-	for (int i = 0; i < difficulty + 2; i++)
-	{
-		memset(map[i], 0, difficulty + 2);
-	}
+	//initial map = {0}
+	for (i = 0; i < difficulty + 2; i++) {
+		for (j = 0; j < difficulty + 2; j++) {
+			map[i][j] = 0;
 
-	for (i = 1; i <= difficulty; i++) {
-		for (j = 1; j <= difficulty; j++) {
+		}
+	}
+	//map[1 to difficulty+1][1 to difficulty+1] = source[0 to difficulty][0 to difficulty]
+	for (i = 1; i < difficulty + 1; i++) {
+		for (j = 1; j < difficulty + 1; j++) {
 			map[i][j] = source[k];
 			k++;
 		}
@@ -226,11 +232,13 @@ void Game::randomMapWithSource(int * source)
 void Game::reInitVisited()
 {
 	for (int i = 0; i < difficulty + 2; i++) {
-		memcpy(visited[i], map[i], difficulty + 2);
+		for (int j = 0; j < difficulty + 2; j++) {
+			visited[i][j] = map[i][j];
+		}
 	}
 }
 
-void Game::reInitMap()
+void Game::reNewMap()
 {
 	map = new int*[difficulty + 2];
 	for (int i = 0; i < difficulty + 2; i++) {
@@ -239,7 +247,7 @@ void Game::reInitMap()
 	visited = new int*[difficulty + 2];
 	for (int i = 0; i < difficulty + 2; i++) {
 		visited[i] = new int[(difficulty + 2)];
-		memcpy(visited[i], map[i], difficulty + 2);
+		//memcpy(visited[i], map[i], difficulty + 2);
 	}
 }
 
@@ -261,7 +269,7 @@ void Game::printMap()
 {
 	for (int i = 0; i < difficulty + 2; i++) {
 		for (int j = 0; j < difficulty + 2; j++) {
-			cout << map[i][j] << " ";
+			cout << visited[i][j] << " ";
 		}
 		cout << endl;
 	}

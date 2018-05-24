@@ -6,6 +6,23 @@
 #include "LinkedList.h"
 
 
+enum direction {
+	UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3
+};
+
+class MyVector {
+public:
+	MyVector();
+	MyVector(int weight, int direction);
+	~MyVector();
+
+	int weight = 0;
+	int dirct = 0;
+};
+inline MyVector::MyVector() {};
+inline MyVector::MyVector(int weight, int direction) : weight(weight), dirct(direction) {}
+inline MyVector::~MyVector() {}
+
 
 class MyPoint {
 public:
@@ -19,10 +36,7 @@ public:
 	int y;
 };
 
-
-inline MyPoint::MyPoint()
-{
-}
+inline MyPoint::MyPoint() {}
 
 inline MyPoint::MyPoint(int x, int y)
 {
@@ -30,32 +44,21 @@ inline MyPoint::MyPoint(int x, int y)
 	this->y = y;
 }
 
-inline MyPoint::~MyPoint()
-{
-}
+inline MyPoint::~MyPoint() {}
 
 inline bool MyPoint::operator==(MyPoint & p)
 {
-	if (this->x == p.x && this->y == p.y) {
-		return true;
-	}
-	return false;
+	return (this->x == p.x && this->y == p.y);
 }
-
 
 
 class Game
 {
-
 public:
 	enum {
 		EASY = 8,
 		NORMAL = 10,
 		DIFFICULT = 16,
-	};
-
-	enum direction {
-		UP, DOWN, LEFT, RIGHT
 	};
 
 
@@ -71,28 +74,30 @@ public:
 
 
 private:
-	int **visited;
+	int **visited = nullptr;
+
+	MyVector *dirct;
+
 	int difficulty;
 
 	int images;
 
 	bool hasFound = false;
 
-	int lines = 0;
-
 public:
 	Game();
 	~Game();
+
 	int getDifficulty();
 	void setDifficulty(int d);
 
-	void reCreateMap();
+	void initeMap();
+
+	void resetMap();
 
 	MyPoint getTip();
 
 	bool judge(MyPoint start, MyPoint end);
-
-	void createMap();
 
 private:
 
@@ -102,9 +107,10 @@ private:
 
 	void reInitVisited();
 
-	void reInitMap();
+	void reNewMap();
 
 	void deleteMap();
+
 	void printMap();
 };
 
