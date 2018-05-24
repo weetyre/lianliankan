@@ -12,7 +12,6 @@ using namespace std;
 
 Game::Game()
 {
-	//new a 2D array, map[difficulty + 2][difficulty + 2]( image is at map[1 to difficulty][1 to difficulty] )
 	path = new LinkedList<MyPoint>();
 	dirct = new MyVector[4];
 }
