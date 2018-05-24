@@ -3,10 +3,11 @@
 #include "time.h"
 #include <iostream>
 #include <algorithm>
+#include <thread>
 
 using namespace std;
 
-#define _IsNIndex(x,y) (x > difficulty + 1) || (x < 0) || (y > difficulty + 1) || (y < 0)
+#define _IsNIndex(x,y) ((x > difficulty + 1) || (x < 0) || (y > difficulty + 1) || (y < 0))
 
 
 Game::Game()
@@ -55,9 +56,91 @@ int Game::getDifficulty()
 
 MyPoint Game::getTip()
 {
+
+	//if (hasFound) {  //has found the path
+	//	return true;
+	//}
+	////the num of lines is greater than 3 or is not a legal index
+	//if (path->getSize() > 3 || _IsNIndex(p.x, p.y)) {
+	//	return false;
+	//}
+	////we find it
+	//if (p == end) {
+	//	hasFound = true;
+	//	path->add(p);
+	//	return true;
+	//}
+	//if (visited[p.y][p.x] != 0) {
+	//	return false;
+	//}
+	//visited[p.y][p.x] = -1;
+
+	////search up
+	//if (direction == UP) {
+	//	DFS(MyPoint(p.x, p.y - 1), UP);
+	//	visited[p.y][p.x] = 0;
+	//}
+	//else {
+	//	path->add(p);  //add 拐点 to path
+	//	if (!DFS(MyPoint(p.x, p.y - 1), UP)) {
+	//		path->removeLast();
+	//	}
+	//}
+	//if (hasFound) {
+	//	return true;
+	//}
+
+	////search left
+	//if (direction == LEFT) {
+	//	DFS(MyPoint(p.x - 1, p.y), LEFT);
+	//	visited[p.y][p.x] = 0;
+	//}
+	//else {
+	//	path->add(p);
+	//	if (!DFS(MyPoint(p.x - 1, p.y), LEFT)) {
+	//		path->removeLast();
+	//	}
+	//}
+	//if (hasFound) {
+	//	return true;
+	//}
+
+	////search down
+	//if (direction == DOWN) {
+	//	DFS(MyPoint(p.x, p.y + 1), DOWN);
+	//	visited[p.y][p.x] = 0;
+	//}
+	//else {
+	//	path->add(p);
+	//	if (!DFS(MyPoint(p.x, p.y + 1), DOWN)) {
+	//		path->removeLast();
+	//	}
+	//}
+	//if (hasFound) {
+	//	return true;
+	//}
+
+	////search RIGHT
+	//if (direction == RIGHT) {
+	//	DFS(MyPoint(p.x + 1, p.y), RIGHT);
+	//	visited[p.y][p.x] = 0;
+	//}
+	//else {
+	//	path->add(p);
+	//	if (!DFS(MyPoint(p.x + 1, p.y), RIGHT)) {
+	//		path->removeLast();
+	//	}
+	//}
+	//if (hasFound) {
+	//	return true;
+	//}
+
 	return MyPoint();
 }
 
+/*
+ * 重排 Map
+ */
 void Game::resetMap()
 {
 	int *s = new int[difficulty * difficulty];
@@ -73,7 +156,7 @@ void Game::resetMap()
 	delete[] s;
 }
 
-//after choose the difficulty, before start the game, create the map
+//after choose the difficulty, before start the game, initial the map
 void Game::initeMap()
 {
 	int *b = new int[difficulty * difficulty];
@@ -104,33 +187,28 @@ bool Game::judge(MyPoint start, MyPoint end)
 	hasFound = false;
 	path->clear();
 
+	sortDirection(start, end);
+
 	path->add(start);
-	//从 start 点开始，上下左右四个方向依次搜索路径
-	if (DFS(MyPoint(start.x, start.y - 1), UP)) {
-		return true;
+	//从 start 点开始，根据 方向优先队列 四个方向依次搜索路径
+	for (int i = 0; i < 4; i++) {
+		if (DFS(getPointByDirct(start, dirct[i].dirct), dirct[i].dirct)) {
+			return true;
+		}
 	}
-	else if (DFS(MyPoint(start.x, start.y + 1), DOWN)) {
-		return true;
-	}
-	else if (DFS(MyPoint(start.x - 1, start.y), LEFT)) {
-		return true;
-	}
-	else if (DFS(MyPoint(start.x + 1, start.y), RIGHT)) {
-		return true;
-	}
-	else {
-		return false;
-	}
+
+	return false;
 }
 
+/*
+ * 深度优先找
+ */
 bool Game::DFS(MyPoint p, int direction)
 {
-	printMap();
-
 	if (hasFound) {  //has found the path
 		return true;
 	}
-	//the num of lines is greater than 3 or is not a legal index
+	//the num of lines is greater than 3 or index is illegal 
 	if (path->getSize() > 3 || _IsNIndex(p.x, p.y)) {
 		return false;
 	}
@@ -140,72 +218,118 @@ bool Game::DFS(MyPoint p, int direction)
 		path->add(p);
 		return true;
 	}
+	//此处有图片
 	if (visited[p.y][p.x] != 0) {
 		return false;
 	}
 	visited[p.y][p.x] = -1;
 
-	//search up
-	if (direction == UP) {
-		DFS(MyPoint(p.x, p.y - 1), UP);
-		visited[p.y][p.x] = 0;
-	}
-	else {
-		path->add(p);  //add 拐点 to path
-		if (!DFS(MyPoint(p.x, p.y - 1), UP)) {
-			path->removeLast();
+	printMap();
+
+	//重新构造队列
+	sortDirection(p, end);
+
+	//根据 方向优先队列 依次深搜
+	for (int i = 0; i < 4; i++) {
+		if (direction == dirct[i].dirct) {
+			DFS(getPointByDirct(p, dirct[i].dirct), dirct[i].dirct);
+			visited[p.y][p.x] = 0;
+
+			//MyPoint t = getPointByDirct(getPointByDirct(p, dirct[i].dirct), dirct[i].dirct);
+			//if (!_IsNIndex(t.x, t.y) && visited[t.y][t.x] == 0) {
+			//	visited[t.y][t.x] = -1;
+			//}
 		}
-	}
-	if (hasFound) {
-		return true;
+		else {
+			path->add(p);  //add 拐点 to path
+			if (!DFS(getPointByDirct(p, dirct[i].dirct), dirct[i].dirct)) {
+				path->removeLast();
+			}
+		}
+		if (hasFound) {
+			return true;
+		}
 	}
 
-	//search left
-	if (direction == LEFT) {
-		DFS(MyPoint(p.x - 1, p.y), LEFT);
-		visited[p.y][p.x] = 0;
+	return false;
+}
+
+/*
+ * 以最适宜的 方向 构造一个优先队列
+ */
+void Game::sortDirection(MyPoint start, MyPoint end)
+{
+	dirct[0].weight = dirct[1].weight = dirct[2].weight = dirct[3].weight = 0;
+	dirct[0].dirct = UP; dirct[1].dirct = DOWN; dirct[2].dirct = LEFT;  dirct[3].dirct = RIGHT;
+
+	int dx = end.x - start.x;
+	int dy = end.y - start.y;
+	if (abs(dx) < abs(dy)) {
+		dirct[0].weight = dirct[1].weight += 1;
+	}
+	else if (abs(dx) > abs(dy)) {
+		dirct[2].weight = dirct[3].weight += 1;
 	}
 	else {
-		path->add(p);
-		if (!DFS(MyPoint(p.x - 1, p.y), LEFT)) {
-			path->removeLast();
-		}
-	}
-	if (hasFound) {
-		return true;
+		dirct[0].weight = dirct[1].weight = dirct[2].weight = dirct[3].weight += 1;
 	}
 
-	//search down
-	if (direction == DOWN) {
-		DFS(MyPoint(p.x, p.y + 1), DOWN);
-		visited[p.y][p.x] = 0;
+	if (dx > 0) {
+		dirct[3].weight++;
+		dirct[2].weight -= 2;
 	}
 	else {
-		path->add(p);
-		if (!DFS(MyPoint(p.x, p.y + 1), DOWN)) {
-			path->removeLast();
-		}
+		dirct[2].weight++;
+		dirct[3].weight -= 2;
 	}
-	if (hasFound) {
-		return true;
+	if (dy > 0) {
+		dirct[1].weight++;
+		dirct[0].weight -= 2;
+	}
+	else {
+		dirct[0].weight++;
+		dirct[1].weight -= 2;
 	}
 
-	//search RIGHT
-	if (direction == RIGHT) {
-		DFS(MyPoint(p.x + 1, p.y), RIGHT);
-		visited[p.y][p.x] = 0;
-	}
-	else {
-		path->add(p);
-		if (!DFS(MyPoint(p.x + 1, p.y), RIGHT)) {
-			path->removeLast();
+	for (int i = 1; i < 4; i++) {
+		MyVector key;
+		key = dirct[i];
+
+		int j = i - 1;
+		for (; j >= 0 && key.weight > dirct[j].weight; j--) {
+			dirct[j + 1] = dirct[j];
 		}
-	}
-	if (hasFound) {
-		return true;
+		dirct[j + 1] = key;
 	}
 }
 
+/*
+ * get a point around p by a direction
+ */
+MyPoint Game::getPointByDirct(MyPoint p, int d)
+{
+	switch (d) {
+	case 0:
+		return MyPoint(p.x, p.y - 1);
+		break;
+	case 1:
+		return MyPoint(p.x, p.y + 1);
+		break;
+	case 2:
+		return MyPoint(p.x - 1, p.y);
+		break;
+	case 3:
+		return MyPoint(p.x + 1, p.y);
+		break;
+	default:
+		return MyPoint();
+		break;
+	}
+}
+
+/*
+ * 重新排列并随机化 source 数组并 copy 到 map
+ */
 void Game::randomMapWithSource(int * source)
 {
 	//random_shuffle()用来对一个元素序列进行重新排序（随机的）andom_shuffle()有两个参数，第一个参数是指向序列首元素的迭代器，第二个参数则指向序列最后一个元素的下一个位置
@@ -229,6 +353,9 @@ void Game::randomMapWithSource(int * source)
 	}
 }
 
+/*
+ * 重新初始化 visited 数组
+ */
 void Game::reInitVisited()
 {
 	for (int i = 0; i < difficulty + 2; i++) {
@@ -238,6 +365,9 @@ void Game::reInitVisited()
 	}
 }
 
+/*
+ * 重新创建 map
+ */
 void Game::reNewMap()
 {
 	map = new int*[difficulty + 2];
@@ -247,7 +377,6 @@ void Game::reNewMap()
 	visited = new int*[difficulty + 2];
 	for (int i = 0; i < difficulty + 2; i++) {
 		visited[i] = new int[(difficulty + 2)];
-		//memcpy(visited[i], map[i], difficulty + 2);
 	}
 }
 
