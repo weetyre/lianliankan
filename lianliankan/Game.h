@@ -42,8 +42,8 @@ public:
 
 	inline bool operator==(MyPoint &p);
 
-	int x;
-	int y;
+	int x = 0;
+	int y = 0;
 };
 
 inline MyPoint::MyPoint() {}
