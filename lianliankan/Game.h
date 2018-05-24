@@ -105,7 +105,7 @@ public:
 
 	void resetMap();
 
-	MyPoint getTip();
+	bool getTip();
 
 	bool judge(MyPoint start, MyPoint end);
 

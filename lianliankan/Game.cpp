@@ -53,88 +53,23 @@ int Game::getDifficulty()
 	return difficulty;
 }
 
-MyPoint Game::getTip()
+/*
+ * 搜索全图，如果找到可消去的两点返回 true；否则 false
+ * 如果 true，用 game.path.getFirst() and game.path.getLast() 获取两个点
+ */
+bool Game::getTip()
 {
-
-	//if (hasFound) {  //has found the path
-	//	return true;
-	//}
-	////the num of lines is greater than 3 or is not a legal index
-	//if (path->getSize() > 3 || _IsNIndex(p.x, p.y)) {
-	//	return false;
-	//}
-	////we find it
-	//if (p == end) {
-	//	hasFound = true;
-	//	path->add(p);
-	//	return true;
-	//}
-	//if (visited[p.y][p.x] != 0) {
-	//	return false;
-	//}
-	//visited[p.y][p.x] = -1;
-
-	////search up
-	//if (direction == UP) {
-	//	DFS(MyPoint(p.x, p.y - 1), UP);
-	//	visited[p.y][p.x] = 0;
-	//}
-	//else {
-	//	path->add(p);  //add 拐点 to path
-	//	if (!DFS(MyPoint(p.x, p.y - 1), UP)) {
-	//		path->removeLast();
-	//	}
-	//}
-	//if (hasFound) {
-	//	return true;
-	//}
-
-	////search left
-	//if (direction == LEFT) {
-	//	DFS(MyPoint(p.x - 1, p.y), LEFT);
-	//	visited[p.y][p.x] = 0;
-	//}
-	//else {
-	//	path->add(p);
-	//	if (!DFS(MyPoint(p.x - 1, p.y), LEFT)) {
-	//		path->removeLast();
-	//	}
-	//}
-	//if (hasFound) {
-	//	return true;
-	//}
-
-	////search down
-	//if (direction == DOWN) {
-	//	DFS(MyPoint(p.x, p.y + 1), DOWN);
-	//	visited[p.y][p.x] = 0;
-	//}
-	//else {
-	//	path->add(p);
-	//	if (!DFS(MyPoint(p.x, p.y + 1), DOWN)) {
-	//		path->removeLast();
-	//	}
-	//}
-	//if (hasFound) {
-	//	return true;
-	//}
-
-	////search RIGHT
-	//if (direction == RIGHT) {
-	//	DFS(MyPoint(p.x + 1, p.y), RIGHT);
-	//	visited[p.y][p.x] = 0;
-	//}
-	//else {
-	//	path->add(p);
-	//	if (!DFS(MyPoint(p.x + 1, p.y), RIGHT)) {
-	//		path->removeLast();
-	//	}
-	//}
-	//if (hasFound) {
-	//	return true;
-	//}
-
-	return MyPoint();
+	for (int i = 1; i < difficulty + 1; i++) {
+		for (int j = 1; j < difficulty + 1; j++) {
+			for (int m = i; m < difficulty + 1; m++) {
+				for (int n = j + 1; j < difficulty + 1; n++) {
+					if (judge(MyPoint(j, i), MyPoint(n, m))) {
+						return true;
+					}
+				}
+			}
+		}
+	}
 }
 
 /*
