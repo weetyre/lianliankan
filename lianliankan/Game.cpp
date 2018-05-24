@@ -58,17 +58,20 @@ int Game::getDifficulty()
  */
 bool Game::getTip()
 {
-	for (int i = 1; i < difficulty + 1; i++) {
-		for (int j = 1; j < difficulty + 1; j++) {
-			for (int m = i; m < difficulty + 1; m++) {
-				for (int n = j + 1; j < difficulty + 1; n++) {
-					if (judge(MyPoint(j, i), MyPoint(n, m))) {
-						return true;
+	
+		for (int i = 1; i < difficulty + 1; i++) {
+			for (int j = 1; j < difficulty + 1; j++) {
+				for (int m = i; m < difficulty + 1; m++) {
+					for (int n = j + 1; n < difficulty + 1; n++) {
+						if (judge(MyPoint(j, i), MyPoint(n, m))) {
+							cout << "( " << path->getFirst().x << "," << path->getFirst().y << ") ->" << "( " << path->getLast().x << "," << path->getLast().y << ")";
+							return true;
+						}
 					}
 				}
 			}
 		}
-	}
+
 }
 
 /*
