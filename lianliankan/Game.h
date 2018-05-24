@@ -71,7 +71,7 @@ public:
 
 
 private:
-
+	int **visited;
 	int difficulty;
 
 	int images;
@@ -100,7 +100,12 @@ private:
 
 	void randomMapWithSource(int * source);
 
+	void reInitVisited();
+
+	void reInitMap();
+
 	void deleteMap();
+	void printMap();
 };
 
 #endif
