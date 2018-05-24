@@ -58,20 +58,18 @@ int Game::getDifficulty()
  */
 bool Game::getTip()
 {
-	
-		for (int i = 1; i < difficulty + 1; i++) {
-			for (int j = 1; j < difficulty + 1; j++) {
-				for (int m = i; m < difficulty + 1; m++) {
-					for (int n = j + 1; n < difficulty + 1; n++) {
-						if (judge(MyPoint(j, i), MyPoint(n, m))) {
-							cout << "( " << path->getFirst().x << "," << path->getFirst().y << ") ->" << "( " << path->getLast().x << "," << path->getLast().y << ")";
-							return true;
-						}
+	for (int i = 1; i < difficulty + 1; i++) {
+		for (int j = 1; j < difficulty + 1; j++) {
+			for (int m = i; m < difficulty + 1; m++) {
+				for (int n = j + 1; n < difficulty + 1; n++) {
+					if (judge(MyPoint(j, i), MyPoint(n, m))) {
+						cout << "( " << path->getFirst().x << "," << path->getFirst().y << ") ->" << "( " << path->getLast().x << "," << path->getLast().y << ")" << endl;
+						return true;
 					}
 				}
 			}
 		}
-
+	}
 }
 
 /*
@@ -334,7 +332,12 @@ void Game::printMap()
 {
 	for (int i = 0; i < difficulty + 2; i++) {
 		for (int j = 0; j < difficulty + 2; j++) {
-			cout << visited[i][j] << " ";
+			if (visited[i][j] > 9 || visited[i][j] < 0) {
+				cout << visited[i][j] << " ";
+			}
+			else {
+				cout << visited[i][j] << "  ";
+			}
 		}
 		cout << endl;
 	}
