@@ -27,7 +27,7 @@ Game::~Game()
 void Game::setDifficulty(int d)
 {
 	difficulty = d;
-	deleteMap();
+	//deleteMap();
 
 	switch (d)
 	{
@@ -325,6 +325,7 @@ void Game::deleteMap()
 			delete[] map[i];
 		}
 	}
+
 	if (visited != nullptr) {
 		for (int i = 0; i < difficulty + 2; i++) {
 			delete[] visited[i];

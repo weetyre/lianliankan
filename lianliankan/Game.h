@@ -67,8 +67,8 @@ class Game
 public:
 	enum {
 		EASY = 8,
-		NORMAL = 10,
-		DIFFICULT = 16,
+		NORMAL = 9,
+		DIFFICULT = 10,
 	};
 
 
