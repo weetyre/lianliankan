@@ -164,10 +164,10 @@ bool Game::DFS(MyPoint p, int direction)
 
 	//printVisited();
 
-	if (p.x == end.x || p.y == end.y) {
+	/*if (p.x == end.x || p.y == end.y) {
 		//重新构造队列
 		sortDirection(p, end);
-	}
+	}*/
 	//重新构造队列
 	//sortDirection(p, end);
 
