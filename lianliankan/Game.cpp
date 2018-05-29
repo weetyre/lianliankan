@@ -62,6 +62,9 @@ bool Game::getTip()
 		for (int j = 1; j < difficulty + 1; j++) {
 			for (int m = i; m < difficulty + 1; m++) {
 				for (int n = j + 1; n < difficulty + 1; n++) {
+					if (map[i][j] != map[m][n] || map[i][j] == 0 || map[m][n] == 0) {
+						continue;
+					}
 					if (judge(MyPoint(j, i), MyPoint(n, m))) {
 						cout << "( " << path->getFirst().x << "," << path->getFirst().y << ") ->" << "( " << path->getLast().x << "," << path->getLast().y << ")" << endl;
 						return true;
@@ -146,6 +149,7 @@ bool Game::DFS(MyPoint p, int direction)
 	if (path->getSize() > 3 || _IsNIndex(p.x, p.y)) {
 		return false;
 	}
+
 	//we find it
 	if (p == end) {
 		hasFound = true;
@@ -158,27 +162,27 @@ bool Game::DFS(MyPoint p, int direction)
 	}
 	visited[p.y][p.x] = -1;
 
-	printMap();
+	//printVisited();
 
+	if (p.x == end.x || p.y == end.y) {
+		//重新构造队列
+		sortDirection(p, end);
+	}
 	//重新构造队列
-	sortDirection(p, end);
+	//sortDirection(p, end);
 
 	//根据 方向优先队列 依次深搜
 	for (int i = 0; i < 4; i++) {
 		if (direction == dirct[i].dirct) {
 			DFS(getPointByDirct(p, dirct[i].dirct), dirct[i].dirct);
 			visited[p.y][p.x] = 0;
-
-			//MyPoint t = getPointByDirct(getPointByDirct(p, dirct[i].dirct), dirct[i].dirct);
-			//if (!_IsNIndex(t.x, t.y) && visited[t.y][t.x] == 0) {
-			//	visited[t.y][t.x] = -1;
-			//}
 		}
 		else {
 			path->add(p);  //add 拐点 to path
 			if (!DFS(getPointByDirct(p, dirct[i].dirct), dirct[i].dirct)) {
 				path->removeLast();
 			}
+			visited[p.y][p.x] = 0;
 		}
 		if (hasFound) {
 			return true;
@@ -212,7 +216,7 @@ void Game::sortDirection(MyPoint start, MyPoint end)
 		dirct[3].weight++;
 		dirct[2].weight -= 2;
 	}
-	else {
+	else if (dx < 0) {
 		dirct[2].weight++;
 		dirct[3].weight -= 2;
 	}
@@ -220,7 +224,7 @@ void Game::sortDirection(MyPoint start, MyPoint end)
 		dirct[1].weight++;
 		dirct[0].weight -= 2;
 	}
-	else {
+	else if (dy < 0) {
 		dirct[0].weight++;
 		dirct[1].weight -= 2;
 	}
@@ -328,7 +332,7 @@ void Game::deleteMap()
 	}
 }
 
-void Game::printMap()
+void Game::printVisited()
 {
 	for (int i = 0; i < difficulty + 2; i++) {
 		for (int j = 0; j < difficulty + 2; j++) {

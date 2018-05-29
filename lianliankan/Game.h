@@ -124,7 +124,7 @@ private:
 
 	void deleteMap();
 
-	void printMap();
+	void printVisited();
 };
 
 #endif
