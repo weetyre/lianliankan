@@ -7,7 +7,7 @@
 
 using namespace std;
 
-#define _IsNIndex(x,y) ((x > difficulty + 1) || (x < 0) || (y > difficulty + 1) || (y < 0))
+#define _IsNIndex(x,y) ((x > images + 1) || (x < 0) || (y > difficulty + 1) || (y < 0))
 
 
 Game::Game()
@@ -32,13 +32,13 @@ void Game::setDifficulty(int d)
 	switch (d)
 	{
 	case EASY:
-		images = EASY;
+		images = 10;
 		break;
 	case NORMAL:
-		images = NORMAL;
+		images = 12;
 		break;
 	case DIFFICULT:
-		images = DIFFICULT;
+		images = 14;
 		break;
 
 	default:
@@ -59,9 +59,9 @@ int Game::getDifficulty()
 bool Game::getTip()
 {
 	for (int i = 1; i < difficulty + 1; i++) {
-		for (int j = 1; j < difficulty + 1; j++) {
+		for (int j = 1; j < images + 1; j++) {
 			for (int m = i; m < difficulty + 1; m++) {
-				for (int n = j + 1; n < difficulty + 1; n++) {
+				for (int n = j + 1; n < images + 1; n++) {
 					if (map[i][j] != map[m][n] || map[i][j] == 0 || map[m][n] == 0) {
 						continue;
 					}
@@ -80,10 +80,10 @@ bool Game::getTip()
  */
 void Game::resetMap()
 {
-	int *s = new int[difficulty * difficulty];
+	int *s = new int[difficulty * images];
 	int k = 0;
 	for (int i = 1; i < difficulty + 1; i++) {
-		for (int j = 1; j < difficulty + 1; j++) {
+		for (int j = 1; j < images + 1; j++) {
 			s[k] = map[i][j];
 			k++;
 		}
@@ -96,9 +96,9 @@ void Game::resetMap()
 //after choose the difficulty, before start the game, initial the map
 void Game::initeMap()
 {
-	int *b = new int[difficulty * difficulty];
+	int *b = new int[difficulty * images];
 	int i, j;
-	for (i = 0; i < difficulty * difficulty; i += images) {
+	for (i = 0; i < difficulty * images; i += images) {
 		for (j = 0; j < images; j++) {
 			b[i + j] = i / images + 1;
 		}
@@ -272,19 +272,19 @@ void Game::randomMapWithSource(int * source)
 {
 	//random_shuffle()用来对一个元素序列进行重新排序（随机的）andom_shuffle()有两个参数，第一个参数是指向序列首元素的迭代器，第二个参数则指向序列最后一个元素的下一个位置
 	srand((unsigned)time(NULL));
-	std::random_shuffle(source, source + difficulty * difficulty);
+	std::random_shuffle(source, source + difficulty * images);
 
 	int k = 0, i, j;
 	//initial map = {0}
 	for (i = 0; i < difficulty + 2; i++) {
-		for (j = 0; j < difficulty + 2; j++) {
+		for (j = 0; j < images + 2; j++) {
 			map[i][j] = 0;
 
 		}
 	}
 	//map[1 to difficulty+1][1 to difficulty+1] = source[0 to difficulty][0 to difficulty]
 	for (i = 1; i < difficulty + 1; i++) {
-		for (j = 1; j < difficulty + 1; j++) {
+		for (j = 1; j < images + 1; j++) {
 			map[i][j] = source[k];
 			k++;
 		}
@@ -297,7 +297,7 @@ void Game::randomMapWithSource(int * source)
 void Game::reInitVisited()
 {
 	for (int i = 0; i < difficulty + 2; i++) {
-		for (int j = 0; j < difficulty + 2; j++) {
+		for (int j = 0; j < images + 2; j++) {
 			visited[i][j] = map[i][j];
 		}
 	}
@@ -310,11 +310,11 @@ void Game::reNewMap()
 {
 	map = new int*[difficulty + 2];
 	for (int i = 0; i < difficulty + 2; i++) {
-		map[i] = new int[(difficulty + 2)];
+		map[i] = new int[(images + 2)];
 	}
 	visited = new int*[difficulty + 2];
 	for (int i = 0; i < difficulty + 2; i++) {
-		visited[i] = new int[(difficulty + 2)];
+		visited[i] = new int[(images + 2)];
 	}
 }
 
@@ -336,7 +336,7 @@ void Game::deleteMap()
 void Game::printVisited()
 {
 	for (int i = 0; i < difficulty + 2; i++) {
-		for (int j = 0; j < difficulty + 2; j++) {
+		for (int j = 0; j < images + 2; j++) {
 			if (visited[i][j] > 9 || visited[i][j] < 0) {
 				cout << visited[i][j] << " ";
 			}

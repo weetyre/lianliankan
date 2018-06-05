@@ -67,8 +67,8 @@ class Game
 public:
 	enum {
 		EASY = 8,
-		NORMAL = 9,
-		DIFFICULT = 10,
+		NORMAL = 10,
+		DIFFICULT = 12,
 	};
 
 
@@ -79,7 +79,7 @@ public:
 	MyPoint start;
 	MyPoint end;
 
-	int restCount;
+	int restCount = difficulty * images;
 	int grade;
 
 
