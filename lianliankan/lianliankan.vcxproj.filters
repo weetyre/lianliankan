@@ -66,6 +66,9 @@
     <ClInclude Include="CBUTTON.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Net_fighting.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lianliankan.cpp">
@@ -108,6 +111,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="CBUTTON.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Net_fighting.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -222,6 +228,9 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="res\help.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\网络决战.bmp">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

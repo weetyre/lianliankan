@@ -196,6 +196,7 @@
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="LOCAL_LIST.h" />
     <ClInclude Include="MENU.h" />
+    <ClInclude Include="Net_fighting.h" />
     <ClInclude Include="NET_LIST.h" />
     <ClInclude Include="NEWID.h" />
     <ClInclude Include="Paths.h" />
@@ -214,6 +215,7 @@
     <ClCompile Include="lianliankanDlg.cpp" />
     <ClCompile Include="LOCAL_LIST.cpp" />
     <ClCompile Include="MENU.cpp" />
+    <ClCompile Include="Net_fighting.cpp" />
     <ClCompile Include="NET_LIST.cpp" />
     <ClCompile Include="NEWID.cpp" />
     <ClCompile Include="Paths.cpp" />
@@ -267,6 +269,7 @@
     <Image Include="res\注册.bmp" />
     <Image Include="res\游戏选项背景.bmp" />
     <Image Include="res\登陆界面.bmp" />
+    <Image Include="res\网络决战.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
