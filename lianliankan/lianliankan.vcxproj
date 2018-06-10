@@ -196,6 +196,7 @@
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="LOCAL_LIST.h" />
     <ClInclude Include="MENU.h" />
+    <ClInclude Include="Musicplayer.h" />
     <ClInclude Include="NET_LIST.h" />
     <ClInclude Include="NEWID.h" />
     <ClInclude Include="Paths.h" />
@@ -214,6 +215,7 @@
     <ClCompile Include="lianliankanDlg.cpp" />
     <ClCompile Include="LOCAL_LIST.cpp" />
     <ClCompile Include="MENU.cpp" />
+    <ClCompile Include="Musicplayer.cpp" />
     <ClCompile Include="NET_LIST.cpp" />
     <ClCompile Include="NEWID.cpp" />
     <ClCompile Include="Paths.cpp" />
