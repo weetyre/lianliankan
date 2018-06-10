@@ -188,6 +188,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CBUTTON.h" />
+    <ClInclude Include="Client.h" />
     <ClInclude Include="CSETTINS.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="HELP.h" />
@@ -208,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CBUTTON.cpp" />
+    <ClCompile Include="Client.cpp" />
     <ClCompile Include="CSETTINS.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="HELP.cpp" />

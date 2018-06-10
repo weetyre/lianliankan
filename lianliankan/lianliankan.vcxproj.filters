@@ -69,6 +69,9 @@
     <ClInclude Include="Net_fighting.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lianliankan.cpp">
@@ -114,6 +117,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Net_fighting.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Client.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
