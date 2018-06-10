@@ -66,6 +66,9 @@
     <ClInclude Include="CBUTTON.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Musicplayer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="Net_fighting.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -120,6 +123,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Client.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Musicplayer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
