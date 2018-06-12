@@ -45,7 +45,7 @@ void Game::setDifficulty(int d)
 		break;
 	}
 
-	reNewMap();
+	reCreateMap();
 }
 int Game::getDifficulty()
 {
@@ -56,7 +56,7 @@ int Game::getDifficulty()
  * 搜索全图，如果找到可消去的两点返回 true；否则 false
  * 如果 true，用 game.path.getFirst() and game.path.getLast() 获取两个点
  */
-bool Game::getTip()
+bool Game::getHint()
 {
 	for (int i = 1; i < difficulty + 1; i++) {
 		for (int j = 1; j < images + 1; j++) {
@@ -78,7 +78,7 @@ bool Game::getTip()
 /*
  * 重排 Map
  */
-void Game::resetMap()
+void Game::rearrangeMap()
 {
 	int *s = new int[difficulty * images];
 	int k = 0;
@@ -94,7 +94,7 @@ void Game::resetMap()
 }
 
 //after choose the difficulty, before start the game, initial the map
-void Game::initeMap()
+void Game::initMap()
 {
 	int *b = new int[difficulty * images];
 	int i, j;
@@ -122,14 +122,21 @@ bool Game::judge(MyPoint start, MyPoint end)
 	this->start = start;
 	this->end = end;
 	hasFound = false;
+	prioritySwitch = false;
 	path->clear();
 
-	sortDirection(start, end);
+	sortDirection(start, end, dirct);
 
 	path->add(start);
 	//从 start 点开始，根据 方向优先队列 四个方向依次搜索路径
 	for (int i = 0; i < 4; i++) {
-		if (DFS(getPointByDirct(start, dirct[i].dirct), dirct[i].dirct)) {
+		if (DFS(getPointByDirct(start, dirct[i].dirct), dirct[i].dirct, dirct)) {
+			int s = path->getSize();
+			//test
+			for (int i = 0; i < s; i++) {
+				cout << "(" << path->get(i).x << ", " << path->get(i).y << ") ->";
+			}
+			cout << endl << endl;
 			return true;
 		}
 	}
@@ -140,7 +147,7 @@ bool Game::judge(MyPoint start, MyPoint end)
 /*
  * 深度优先找
  */
-bool Game::DFS(MyPoint p, int direction)
+bool Game::DFS(MyPoint p, int direction, MyVector *dirct)
 {
 	if (hasFound) {  //has found the path
 		return true;
@@ -152,9 +159,8 @@ bool Game::DFS(MyPoint p, int direction)
 
 	//we find it
 	if (p == end) {
-		hasFound = true;
 		path->add(p);
-		return true;
+		return hasFound = true;
 	}
 	//此处有图片
 	if (visited[p.y][p.x] != 0) {
@@ -168,23 +174,29 @@ bool Game::DFS(MyPoint p, int direction)
 	//	//重新构造队列
 	//	sortDirection(p, end);
 	//}
-	//重新构造队列
-	//sortDirection(p, end);
+
+	MyVector *dirctArray = dirct;
+	//防止多余的搜索路径，重新排序方向队列
+	if (p.x == end.x || p.y == end.y) {
+		MyVector array2[4];
+		sortDirection(p, end, array2);
+		dirctArray = array2;
+	}
 
 	//根据 方向优先队列 依次深搜
 	for (int i = 0; i < 4; i++) {
-		if (direction == dirct[i].dirct) {
-			DFS(getPointByDirct(p, dirct[i].dirct), dirct[i].dirct);
-			visited[p.y][p.x] = 0;
+		if (direction == dirctArray[i].dirct) {
+			DFS(getPointByDirct(p, dirctArray[i].dirct), dirctArray[i].dirct, dirctArray);
 		}
 		else {
 			path->add(p);  //add 拐点 to path
-			if (!DFS(getPointByDirct(p, dirct[i].dirct), dirct[i].dirct)) {
+			if (!DFS(getPointByDirct(p, dirctArray[i].dirct), dirctArray[i].dirct, dirctArray)) {
 				path->removeLast();
 			}
-			visited[p.y][p.x] = 0;
 		}
-		if (hasFound) {
+		visited[p.y][p.x] = 0;
+
+		if (hasFound) {  //has found the path
 			return true;
 		}
 	}
@@ -195,8 +207,9 @@ bool Game::DFS(MyPoint p, int direction)
 /*
  * 以最适宜的 方向 构造一个优先队列
  */
-void Game::sortDirection(MyPoint start, MyPoint end)
+void Game::sortDirection(MyPoint start, MyPoint end, MyVector *dirct)
 {
+	//initial array
 	dirct[0].weight = dirct[1].weight = dirct[2].weight = dirct[3].weight = 0;
 	dirct[0].dirct = UP; dirct[1].dirct = DOWN; dirct[2].dirct = LEFT;  dirct[3].dirct = RIGHT;
 
@@ -228,7 +241,7 @@ void Game::sortDirection(MyPoint start, MyPoint end)
 		dirct[0].weight++;
 		dirct[1].weight -= 2;
 	}
-
+	//insertion-sort
 	for (int i = 1; i < 4; i++) {
 		MyVector key;
 		key = dirct[i];
@@ -306,7 +319,7 @@ void Game::reInitVisited()
 /*
  * 重新创建 map
  */
-void Game::reNewMap()
+void Game::reCreateMap()
 {
 	map = new int*[difficulty + 2];
 	for (int i = 0; i < difficulty + 2; i++) {

@@ -25,7 +25,6 @@ public:
 inline MyVector::MyVector() : weight(0), dirct(0) {};
 inline MyVector::MyVector(int weight, int direction) : weight(weight), dirct(direction) {}
 inline MyVector::~MyVector() {}
-
 inline MyVector MyVector::operator=(MyVector v)
 {
 	this->dirct = v.dirct;
@@ -47,7 +46,6 @@ public:
 };
 
 inline MyPoint::MyPoint() {}
-
 inline MyPoint::MyPoint(int x, int y)
 {
 	this->x = x;
@@ -55,7 +53,6 @@ inline MyPoint::MyPoint(int x, int y)
 }
 
 inline MyPoint::~MyPoint() {}
-
 inline bool MyPoint::operator==(MyPoint & p)
 {
 	return (this->x == p.x && this->y == p.y);
@@ -94,6 +91,8 @@ private:
 
 	bool hasFound = false;
 
+	bool prioritySwitch = false;
+
 public:
 	Game();
 	~Game();
@@ -101,26 +100,26 @@ public:
 	int getDifficulty();
 	void setDifficulty(int d);
 
-	void initeMap();
+	void initMap();
 
-	void resetMap();
+	void rearrangeMap();
 
-	bool getTip();
+	bool getHint();
 
 	bool judge(MyPoint start, MyPoint end);
 
 private:
 
-	bool DFS(MyPoint p, int direction);
+	bool DFS(MyPoint p, int direction, MyVector *dirct);
 
-	void sortDirection(MyPoint start, MyPoint end);
+	void sortDirection(MyPoint start, MyPoint end, MyVector *dirct);
 	MyPoint getPointByDirct(MyPoint p, int dirct);
 
 	void randomMapWithSource(int * source);
 
 	void reInitVisited();
 
-	void reNewMap();
+	void reCreateMap();
 
 	void deleteMap();
 
