@@ -40,7 +40,7 @@ public:
 	MusicPlayer();
 	~MusicPlayer();
 	bool load(const  std::string& _filename);
-	bool play(int start_ms = 0, int end_ms = -1);
+	bool playAndRepeat(bool repeated = 0, int start_ms = 0, int end_ms = -1);
 	bool stop();
 	bool pause();
 	bool unpause();
