@@ -27,7 +27,8 @@ Game::~Game()
 void Game::setDifficulty(int d)
 {
 	difficulty = d;
-	//deleteMap();
+
+	deleteMap();
 
 	switch (d)
 	{
