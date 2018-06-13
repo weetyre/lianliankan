@@ -5,14 +5,20 @@ long User::idCount = 0;
 
 User::User()
 {
-
 }
 
-User::User(long id, string n):name(n),id(id)
+User::User(string name, string password):name(name), password(password)
+{
+}
+
+User::User(long id, string password): password(password),id(id)
 {
 
 }
 
+User::User(long id, string password, string name):name(name), password(password), id(id)
+{
+}
 
 User::~User()
 {
@@ -26,6 +32,11 @@ string User::recordAt(int i)
 string User::setName(string n)
 {
 	return name = n;
+}
+
+string User::setPassword(string p)
+{
+	return password = p;
 }
 
 void User::addRecord(string record)
