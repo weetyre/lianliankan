@@ -11,14 +11,16 @@ class User
 {
 public:
 	User();
-	User(long id, string n);
+	User(string name, string password);
+	User(long id, string password);
+	User(long id, string password, string name);
 	~User();
 
 	string recordAt(int i);
 
 private:
 	string name;
-
+	string password;
 	long id;
 
 	static long idCount;
@@ -28,6 +30,8 @@ private:
 public:
 
 	string setName(string n);
+
+	string setPassword(string p);
 
 	void addRecord(string record);
 
