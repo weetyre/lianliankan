@@ -1,5 +1,6 @@
 ﻿#include "stdafx.h"
 #include "User.h"
+#include <stdlib.h>
 
 int User::idCount = 0;
 
@@ -24,7 +25,7 @@ User::~User()
 {
 }
 
-string User::recordAt(int i)
+Record User::recordAt(int i)
 {
 	return records.get(i);
 }
@@ -54,7 +55,7 @@ int User::setId(int i)
 	return id = i;
 }
 
-void User::addRecord(string record)
+void User::addRecord(Record record)
 {
 	records.add(record);
 }
@@ -67,4 +68,32 @@ int User::setIdCount(int c)
 User User::createUser(string name, string p)
 {
 	return User(idCount++, p, name);
+}
+
+Record::Record()
+{
+}
+
+Record::Record(string s, int score):info(s), score(score)
+{
+}
+
+Record::~Record()
+{
+}
+
+int Record::getScore()
+{
+	return score;
+}
+
+bool Record::isLargerThan(Record r)
+{
+	return this->score > r.score;
+}
+
+string Record::toString()
+{
+	char s[10];
+	return info + string(itoa(score, s, 10));
 }

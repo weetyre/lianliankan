@@ -7,6 +7,21 @@
 
 using namespace std;
 
+class Record {
+public:
+	Record();
+	Record(string s, int score);
+	~Record();
+
+
+	string info;
+	int score;
+
+	int getScore();
+	bool isLargerThan(Record r);
+	string toString();
+};
+
 class User
 {
 public:
@@ -16,7 +31,7 @@ public:
 	User(int id, string password, string name);
 	~User();
 
-	string recordAt(int i);
+	Record recordAt(int i);
 
 private:
 	string name;
@@ -25,7 +40,7 @@ private:
 
 	static int idCount;
 
-	LinkedList<string> records;
+	LinkedList<Record> records;
 
 public:
 
@@ -39,7 +54,7 @@ public:
 
 	int setId(int i);
 
-	void addRecord(string record);
+	void addRecord(Record record);
 
 	static int setIdCount(int c);
 
