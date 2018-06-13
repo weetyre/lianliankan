@@ -12,8 +12,8 @@ class User
 public:
 	User();
 	User(string name, string password);
-	User(long id, string password);
-	User(long id, string password, string name);
+	User(int id, string password);
+	User(int id, string password, string name);
 	~User();
 
 	string recordAt(int i);
@@ -21,23 +21,29 @@ public:
 private:
 	string name;
 	string password;
-	long id;
+	int id;
 
-	static long idCount;
+	static int idCount;
 
 	LinkedList<string> records;
 
 public:
 
+	int getId();
+
+	string getName();
+
 	string setName(string n);
 
 	string setPassword(string p);
 
+	int setId(int i);
+
 	void addRecord(string record);
 
-	static long setIdCount(long c);
+	static int setIdCount(int c);
 
-	static User createUser(string name);
+	static User createUser(string name, string p);
 };
 
 #endif
