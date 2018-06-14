@@ -92,6 +92,16 @@ int Record::getScore()
 	return score;
 }
 
+string Record::getMode()
+{
+	return mode_;
+}
+
+string Record::getInfo()
+{
+	return info;
+}
+
 bool Record::isLargerThan(Record r)
 {
 	return this->score > r.score;
