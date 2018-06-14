@@ -55,6 +55,11 @@ int User::setId(int i)
 	return id = i;
 }
 
+int User::getRecordLength()
+{
+	return records.getSize();
+}
+
 void User::addRecord(Record record)
 {
 	records.add(record);
@@ -74,7 +79,7 @@ Record::Record()
 {
 }
 
-Record::Record(string s, int score):info(s), score(score)
+Record::Record(string s, int score, string mode_):info(s), score(score),mode_(mode_)
 {
 }
 

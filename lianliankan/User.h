@@ -10,13 +10,13 @@ using namespace std;
 class Record {
 public:
 	Record();
-	Record(string s, int score);
+	Record(string s, int score, string mode_);
 	~Record();
 
 
 	string info;
 	int score;
-
+	string mode_;
 	int getScore();
 	bool isLargerThan(Record r);
 	string toString();
@@ -53,7 +53,7 @@ public:
 	string setPassword(string p);
 
 	int setId(int i);
-
+	int getRecordLength();
 	void addRecord(Record record);
 
 	static int setIdCount(int c);
