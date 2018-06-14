@@ -71,7 +71,7 @@ bool MusicPlayer::load(const std::string& _filename)
 	return true;
 }
 
-bool MusicPlayer::playAndRepeat(int start_ms, int end_ms)
+bool MusicPlayer::playAndRepeat(bool repeated, int start_ms, int end_ms)
 {
 	if (end_ms == -1) end_ms = length_ms;
 	std::string cmd;
@@ -82,7 +82,9 @@ bool MusicPlayer::playAndRepeat(int start_ms, int end_ms)
 	cmd.append(start_str);
 	cmd.append(" to ");
 	cmd.append(end_str);
-	cmd.append(" repeat");
+	if (repeated) {
+		cmd.append(" repeat");
+	}
 
 	return mci.send(cmd);
 }
