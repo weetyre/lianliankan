@@ -18,6 +18,9 @@ public:
 	int score;
 	string mode_;
 	int getScore();
+	string getMode();
+	string getInfo();
+
 	bool isLargerThan(Record r);
 	string toString();
 };
