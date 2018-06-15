@@ -12,7 +12,7 @@ enum direction {
 	UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3
 };
 
-class MyVector  {
+class MyVector {
 public:
 	MyVector();
 	MyVector(int weight, int direction);
@@ -59,7 +59,7 @@ inline bool MyPoint::operator==(MyPoint & p)
 }
 
 
-class Game 
+class Game
 {
 public:
 	enum {
