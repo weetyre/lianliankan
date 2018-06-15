@@ -33,7 +33,7 @@ inline MyVector MyVector::operator=(MyVector v)
 }
 
 
-class MyPoint {
+class MyPoint  {
 public:
 	MyPoint();
 	MyPoint(int x, int y);

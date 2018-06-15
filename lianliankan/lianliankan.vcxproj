@@ -23,7 +23,7 @@
     <ProjectGuid>{F22EE342-30EB-47E9-ABD5-D49AE88FE08C}</ProjectGuid>
     <Keyword>MFCProj</Keyword>
     <RootNamespace>lianliankan</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -206,6 +206,7 @@
     <ClInclude Include="Paths.h" />
     <ClInclude Include="PLAY.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="set.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="User.h" />
@@ -226,6 +227,7 @@
     <ClCompile Include="NEWID.cpp" />
     <ClCompile Include="Paths.cpp" />
     <ClCompile Include="PLAY.cpp" />
+    <ClCompile Include="set.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

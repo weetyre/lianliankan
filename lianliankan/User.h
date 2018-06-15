@@ -7,37 +7,61 @@
 
 using namespace std;
 
+class Record {
+public:
+	Record();
+	Record(string s, int score, string mode_);
+	~Record();
+
+
+	string info;
+	int score;
+	string mode_;
+	int getScore();
+	string getMode();
+	string getInfo();
+
+	bool isLargerThan(Record r);
+	string toString();
+};
+
 class User
 {
 public:
 	User();
 	User(string name, string password);
-	User(long id, string password);
-	User(long id, string password, string name);
+	User(int id, string password);
+	User(int id, string password, string name);
 	~User();
 
-	string recordAt(int i);
+	Record recordAt(int i);
 
 private:
 	string name;
 	string password;
-	long id;
+	int id;
 
-	static long idCount;
+	static int idCount;
 
-	LinkedList<string> records;
+	LinkedList<Record> records;
 
 public:
+
+	int getId();
+
+	string getName();
 
 	string setName(string n);
 
 	string setPassword(string p);
 
-	void addRecord(string record);
+	int setId(int i);
+	int getRecordLength();
+	void addRecord(Record record);
 
-	static long setIdCount(long c);
+	static int setIdCount(int c);
 
-	static User createUser(string name);
+	static User createUser(string name, string p);
 };
 
 #endif

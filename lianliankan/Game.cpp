@@ -10,6 +10,8 @@ using namespace std;
 #define _IsNIndex(x,y) ((x > images + 1) || (x < 0) || (y > difficulty + 1) || (y < 0))
 
 
+
+
 Game::Game()
 {
 	path = new LinkedList<MyPoint>();
@@ -26,9 +28,9 @@ Game::~Game()
 
 void Game::setDifficulty(int d)
 {
-	difficulty = d;
 
 	deleteMap();
+	difficulty = d;
 
 	switch (d)
 	{
