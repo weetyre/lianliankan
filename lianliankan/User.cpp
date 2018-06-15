@@ -1,7 +1,7 @@
 ﻿#include "stdafx.h"
 #include "User.h"
 
-
+long User::idCount = 0;
 User::User()
 {
 }
