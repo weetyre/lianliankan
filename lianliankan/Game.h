@@ -107,6 +107,7 @@ public:
 	bool getHint();
 
 	bool judge(MyPoint start, MyPoint end);
+	void printVisited();
 
 private:
 
@@ -123,7 +124,6 @@ private:
 
 	void deleteMap();
 
-	void printVisited();
 };
 
 #endif
