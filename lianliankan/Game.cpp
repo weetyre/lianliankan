@@ -76,6 +76,7 @@ bool Game::getHint()
 			}
 		}
 	}
+	//printVisited();
 }
 
 /*
@@ -317,6 +318,7 @@ void Game::reInitVisited()
 			visited[i][j] = map[i][j];
 		}
 	}
+	//printVisited();
 }
 
 /*
@@ -358,6 +360,18 @@ void Game::printVisited()
 			}
 			else {
 				cout << visited[i][j] << "  ";
+			}
+		}
+		cout << endl;
+	}
+	cout << endl;
+	for (int i = 0; i < difficulty + 2; i++) {
+		for (int j = 0; j < images + 2; j++) {
+			if (visited[i][j] > 9 || visited[i][j] < 0) {
+				cout << map[i][j] << " ";
+			}
+			else {
+				cout << map[i][j] << "  ";
 			}
 		}
 		cout << endl;

@@ -2,7 +2,7 @@
 #include "User.h"
 #include <stdlib.h>
 
-
+int User::idCount = 0;
 User::User()
 {
 }
