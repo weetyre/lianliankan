@@ -63,9 +63,12 @@ bool Game::getHint()
 {
 	for (int i = 1; i < difficulty + 1; i++) {
 		for (int j = 1; j < images + 1; j++) {
-			for (int m = i; m < difficulty + 1; m++) {
-				for (int n = j + 1; n < images + 1; n++) {
-					if (map[i][j] != map[m][n] || map[i][j] == 0 || map[m][n] == 0) {
+			if (map[i][j] == 0) {
+				continue;
+			}
+			for (int m = 1; m < difficulty + 1; m++) {
+				for (int n = 1; n < images + 1; n++) {
+					if (map[i][j] != map[m][n] || map[m][n] == 0 || (i == m && j == n)) {
 						continue;
 					}
 					if (judge(MyPoint(j, i), MyPoint(n, m))) {
