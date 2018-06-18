@@ -1,4 +1,11 @@
 ﻿#pragma once
+
+/***
+* LinkedList.h
+*
+* Zhang Xiaoming
+****/
+
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 

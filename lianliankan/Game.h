@@ -1,5 +1,11 @@
 ﻿#pragma once
 
+/***
+* Game.h - game core: judge whether two pictures match; initial and rearrange map; MyPoint Model
+*
+* Zhang Xiaoming
+****/
+
 #ifndef GAME_H_
 #define GAME_H_
 

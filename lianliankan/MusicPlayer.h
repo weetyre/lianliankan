@@ -1,5 +1,11 @@
 #pragma once
 
+/***
+* MusicPlayer.h - Audio player
+*
+* Zhang Xiaoming
+****/
+
 #ifndef MUSICPLAYER_H
 #define MUSICPLAYER_H
 
@@ -25,9 +31,9 @@ public:
 };
 
 /*
- * Actually, we can call it soundPlayer.
+ * Actually, we can call it Audio player.
  * you can create a instance at first and use musicPlayer.load(filename)
- * to open a audio file and use musicPlayer.player() to play it.
+ * to open an audio file and use musicPlayer.player() to play it.
  */
 class MusicPlayer
 {
