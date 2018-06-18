@@ -126,8 +126,6 @@ LinkedList<T>::~LinkedList() {
 		last = last->prev;
 		delete l;
 	}
-
-	//delete this;
 }
 
 template<typename T>
