@@ -1,5 +1,11 @@
 ﻿#pragma once
 
+/***
+* Game.h - game core: judge whether two pictures match; initial and rearrange map; MyPoint Model
+*
+* Zhang Xiaoming
+****/
+
 #ifndef GAME_H_
 #define GAME_H_
 
@@ -33,7 +39,7 @@ inline MyVector MyVector::operator=(MyVector v)
 }
 
 
-class MyPoint {
+class MyPoint  {
 public:
 	MyPoint();
 	MyPoint(int x, int y);
@@ -68,7 +74,6 @@ public:
 		DIFFICULT = 12,
 	};
 
-
 	int ** map = nullptr;
 
 	LinkedList<MyPoint> *path;
@@ -91,8 +96,6 @@ private:
 
 	bool hasFound = false;
 
-	bool prioritySwitch = false;
-
 public:
 	Game();
 	~Game();
@@ -108,11 +111,14 @@ public:
 
 	bool judge(MyPoint start, MyPoint end);
 
+	void printVisited();
+
 private:
 
 	bool DFS(MyPoint p, int direction, MyVector *dirct);
 
 	void sortDirection(MyPoint start, MyPoint end, MyVector *dirct);
+
 	MyPoint getPointByDirct(MyPoint p, int dirct);
 
 	void randomMapWithSource(int * source);
@@ -123,7 +129,6 @@ private:
 
 	void deleteMap();
 
-	void printVisited();
 };
 
 #endif

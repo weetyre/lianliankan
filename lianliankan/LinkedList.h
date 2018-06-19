@@ -1,4 +1,11 @@
-#pragma once
+﻿#pragma once
+
+/***
+* LinkedList.h
+*
+* Zhang Xiaoming
+****/
+
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
@@ -126,8 +133,6 @@ LinkedList<T>::~LinkedList() {
 		last = last->prev;
 		delete l;
 	}
-
-	//delete this;
 }
 
 template<typename T>
@@ -221,7 +226,7 @@ inline void LinkedList<T>::checkIndex(const int index)
 	if (index >= size || index < 0) {
 		throw out_of_range("");
 	}
-}
+}                                                  
 
 template<typename T>
 inline Node<T>* LinkedList<T>::nodeAt(const int index)
