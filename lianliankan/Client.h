@@ -5,6 +5,6 @@
 #pragma comment(lib,"WS2_32.lib")  
 using namespace std;
 
-int hasifOnserver(string id);
+int sendms(string id);
 
 int addIDOnserver(string id);

@@ -1,5 +1,3 @@
-userid: 1111!!scores: 1232!!class: 1
-userid: 123!!scores: 1223!!calss: 2
-userid: 123!!scores: 1001!!class: 2
-userid: 123!!scores: 1002!!class: 2
-userid: 123!!scores: 1003!!class: 2
+userid: 123!!scores: 258!!class: 1
+userid: okys!!scores: 1222!!class : 2
+userid: tese8993!!scores: 1222!!class : 2
