@@ -1,4 +1,11 @@
 ﻿#pragma once
+
+/***
+* LinkedList.h
+*
+* Zhang Xiaoming
+****/
+
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
@@ -126,8 +133,6 @@ LinkedList<T>::~LinkedList() {
 		last = last->prev;
 		delete l;
 	}
-
-	//delete this;
 }
 
 template<typename T>

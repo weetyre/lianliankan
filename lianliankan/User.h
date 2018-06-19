@@ -1,4 +1,11 @@
 ﻿#pragma once
+
+/***
+* User.h - User model
+*
+* Zhang Xiaoming
+****/
+
 #ifndef USER_H_
 #define USER_H_
 

@@ -1,9 +1,9 @@
 ﻿#include "stdafx.h"
 #include "MusicPlayer.h"
 #include <mciapi.h>
-#include<iostream> 
-#include<random> 
-#include<time.h> 
+#include <iostream> 
+#include <random> 
+#include <time.h> 
 
 Mci::Mci()
 {

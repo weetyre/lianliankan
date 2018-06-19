@@ -10,8 +10,6 @@ using namespace std;
 #define _IsNIndex(x,y) ((x > images + 1) || (x < 0) || (y > difficulty + 1) || (y < 0))
 
 
-
-
 Game::Game()
 {
 	path = new LinkedList<MyPoint>();
@@ -61,6 +59,7 @@ int Game::getDifficulty()
  */
 bool Game::getHint()
 {
+	// O(n^4)?
 	for (int i = 1; i < difficulty + 1; i++) {
 		for (int j = 1; j < images + 1; j++) {
 			if (map[i][j] == 0) {
@@ -79,7 +78,6 @@ bool Game::getHint()
 			}
 		}
 	}
-	//printVisited();
 }
 
 /*
@@ -100,7 +98,9 @@ void Game::rearrangeMap()
 	delete[] s;
 }
 
-//after choose the difficulty, before start the game, initial the map
+/*
+ * after choose the difficulty, before start the game, initial the map
+ */
 void Game::initMap()
 {
 	int *b = new int[difficulty * images];
@@ -129,7 +129,6 @@ bool Game::judge(MyPoint start, MyPoint end)
 	this->start = start;
 	this->end = end;
 	hasFound = false;
-	prioritySwitch = false;
 	path->clear();
 
 	sortDirection(start, end, dirct);
@@ -138,8 +137,8 @@ bool Game::judge(MyPoint start, MyPoint end)
 	//从 start 点开始，根据 方向优先队列 四个方向依次搜索路径
 	for (int i = 0; i < 4; i++) {
 		if (DFS(getPointByDirct(start, dirct[i].dirct), dirct[i].dirct, dirct)) {
-			int s = path->getSize();
 			//test
+			int s = path->getSize();
 			for (int i = 0; i < s; i++) {
 				cout << "(" << path->get(i).x << ", " << path->get(i).y << ") ->";
 			}
@@ -176,11 +175,6 @@ bool Game::DFS(MyPoint p, int direction, MyVector *dirct)
 	visited[p.y][p.x] = -1;
 
 	//printVisited();
-
-	//if (p.x == end.x || p.y == end.y) {
-	//	//重新构造队列
-	//	sortDirection(p, end);
-	//}
 
 	MyVector *dirctArray = dirct;
 	//防止多余的搜索路径，重新排序方向队列
@@ -227,9 +221,6 @@ void Game::sortDirection(MyPoint start, MyPoint end, MyVector *dirct)
 	}
 	else if (abs(dx) > abs(dy)) {
 		dirct[2].weight = dirct[3].weight += 1;
-	}
-	else {
-		dirct[0].weight = dirct[1].weight = dirct[2].weight = dirct[3].weight += 1;
 	}
 
 	if (dx > 0) {
@@ -292,14 +283,14 @@ void Game::randomMapWithSource(int * source)
 {
 	//random_shuffle()用来对一个元素序列进行重新排序（随机的）andom_shuffle()有两个参数，第一个参数是指向序列首元素的迭代器，第二个参数则指向序列最后一个元素的下一个位置
 	srand((unsigned)time(NULL));
-	std::random_shuffle(source, source + difficulty * images);
+	random_shuffle(source, source + difficulty * images);
 
 	int k = 0, i, j;
 	//initial map = {0}
 	for (i = 0; i < difficulty + 2; i++) {
 		for (j = 0; j < images + 2; j++) {
 			map[i][j] = 0;
-
+			//menset()并不好用
 		}
 	}
 	//map[1 to difficulty+1][1 to difficulty+1] = source[0 to difficulty][0 to difficulty]
@@ -319,9 +310,9 @@ void Game::reInitVisited()
 	for (int i = 0; i < difficulty + 2; i++) {
 		for (int j = 0; j < images + 2; j++) {
 			visited[i][j] = map[i][j];
+			//mencpy()并不好用
 		}
 	}
-	//printVisited();
 }
 
 /*
@@ -330,11 +321,9 @@ void Game::reInitVisited()
 void Game::reCreateMap()
 {
 	map = new int*[difficulty + 2];
-	for (int i = 0; i < difficulty + 2; i++) {
-		map[i] = new int[(images + 2)];
-	}
 	visited = new int*[difficulty + 2];
 	for (int i = 0; i < difficulty + 2; i++) {
+		map[i] = new int[(images + 2)];
 		visited[i] = new int[(images + 2)];
 	}
 }
@@ -363,18 +352,6 @@ void Game::printVisited()
 			}
 			else {
 				cout << visited[i][j] << "  ";
-			}
-		}
-		cout << endl;
-	}
-	cout << endl;
-	for (int i = 0; i < difficulty + 2; i++) {
-		for (int j = 0; j < images + 2; j++) {
-			if (visited[i][j] > 9 || visited[i][j] < 0) {
-				cout << map[i][j] << " ";
-			}
-			else {
-				cout << map[i][j] << "  ";
 			}
 		}
 		cout << endl;
